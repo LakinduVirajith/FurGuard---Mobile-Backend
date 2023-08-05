@@ -1,6 +1,6 @@
 package com.furguard.backend.enums;
 
-public enum Species {
+public enum PetSpecies {
     Dog,
 
     Cat,
