@@ -38,15 +38,24 @@ public class EmailServiceImpl implements EmailService{
             String activationUrl = baseUrl + "/user/activate?token=" + user.getActivationToken();
 
             String emailBody = "<html>"
-                    + "<body style='font-family: Arial, sans-serif;'>"
-                    + "<h3>Hello " + user.getFullName() + ",</h3>"
-                    + "<p>Thank you for registering with FurGuard. To activate your account, please click the link below:</p>"
-                    + "<p><a href='" + activationUrl + "'>Activate My Account</a></p>"
-                    + "<p>This activation link will expire in 10 minutes for security reasons, so make sure to activate your account promptly.</p>"
-                    + "<p>If you didn't sign up for FurGuard, you can safely ignore this email.</p>"
-                    + "<p>Best regards,<br>The FurGuard Team</p>"
+                    + "<body style='font-family: Roboto, Arial, sans-serif; width: fit-content;'>"
+                    + "<h3 style='color: #252525;'>Hello " + user.getFullName() + "</h3>"
+                    + "<hr style='height: 1px; width: 100%; background-color: #252525;' />"
+                    + "<p style='color: #252525;'>Thank you for registering with FurGuard.</p>"
+                    + "<p style='margin-bottom: 24px; color: #252525;'>Activate your account, please click the <strong style='color: #252525;'>Verify Email</strong> button below:</p>"
+                    + "<button style='background-color: white; border: solid 2px #252525; border-radius: 8px; padding: 8px; cursor: pointer;'>"
+                    + "<a style='color: inherit; text-decoration: none; font-size: 14px;' href='" + activationUrl + "'>Verify Email</a>"
+                    + "</button>"
+                    + "<p style='margin-top: 24px; color: #252525;'>This activation link will expire in 10 minutes for security reasons.</p>"
+                    + "<p style='margin-bottom: 24; color: #252525;'>so make sure to activate your account promptly.</p>"
+                    + "<p style='color: #252525;'>If you didn't sign up for FurGuard, you can safely ignore this email.</p>"
+                    + "<hr style='height: 1px;  margin-top: 24px; width: 100%; background-color: #252525;' />"
+                    + "<p style='color: #252525;'>Best regards,</p>"
+                    + "<p style='color: #252525;'>FurGuard Team</p>"
                     + "</body>"
                     + "</html>";
+
+
 
             messageHelper.setText(emailBody, true);
 

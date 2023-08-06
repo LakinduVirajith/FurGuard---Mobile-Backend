@@ -10,8 +10,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: vp.code.labs@gmail.com
-    password: pyyihpaiknagzeys
+    username: "your email address"
+    password: "your password"
     properties:
       mail:
         smtp:
@@ -29,7 +29,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/fur_guard
-    password: Lakindu@MySQL
+    password: "your password"
   jpa:
     show-sql: 'true'
     hibernate:
