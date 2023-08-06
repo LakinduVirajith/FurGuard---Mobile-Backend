@@ -1,6 +1,6 @@
 package com.furguard.backend.errors;
 
-import com.furguard.backend.entities.ErrorMessage;
+import com.furguard.backend.entities.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +13,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ErrorMessage> NotFoundException(NotFoundException exception){
-        ErrorMessage message = new ErrorMessage(404, HttpStatus.NOT_FOUND, exception.getMessage());
+    public ResponseEntity<ResponseMessage> NotFoundException(NotFoundException exception){
+        ResponseMessage message = new ResponseMessage(404, HttpStatus.NOT_FOUND, exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<ResponseMessage> InvalidTokenException(InvalidTokenException exception){
+        ResponseMessage message = new ResponseMessage(400, HttpStatus.BAD_REQUEST, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+    }
+
+    @ExceptionHandler(AlreadyExistEmailException.class)
+    public ResponseEntity<ResponseMessage> AlreadyExistEmailException(AlreadyExistEmailException exception){
+        ResponseMessage message = new ResponseMessage(409, HttpStatus.CONFLICT, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
     }
 }

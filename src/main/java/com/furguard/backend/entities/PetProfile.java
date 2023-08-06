@@ -1,19 +1,14 @@
 package com.furguard.backend.entities;
 
-import com.furguard.backend.enums.Gender;
-import com.furguard.backend.enums.Species;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.furguard.backend.enums.PetGender;
+import com.furguard.backend.enums.PetSpecies;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 @Entity
 @Data
@@ -23,8 +18,8 @@ import java.util.UUID;
 public class PetProfile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long pet_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long petId;
 
     @NotNull
     private String name;
@@ -34,7 +29,8 @@ public class PetProfile {
     private String description;
 
     @NotNull
-    private Species species;
+    @Enumerated(EnumType.STRING)
+    private PetSpecies species;
 
     @NotNull
     private String breed;
@@ -49,5 +45,6 @@ public class PetProfile {
     private String color;
 
     @NotNull
-    private Gender gender;
+    @Enumerated(EnumType.STRING)
+    private PetGender gender;
 }

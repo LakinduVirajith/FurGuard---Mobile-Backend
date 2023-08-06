@@ -1,6 +1,6 @@
 package com.furguard.backend.services;
 
-import com.furguard.backend.entities.ErrorMessage;
+import com.furguard.backend.entities.ResponseMessage;
 import com.furguard.backend.entities.PetProfile;
 import com.furguard.backend.errors.NotFoundException;
 import com.furguard.backend.repositories.ProfileRepository;
@@ -31,7 +31,7 @@ public class ProfileServiceImpl implements ProfileService{
         Optional<PetProfile> optionalPetProfile = profileRepository.findById(profileId);
 
         if (!optionalPetProfile.isPresent()) {
-            throw new NotFoundException("Profile Not Found");
+            throw new NotFoundException("Profile not found");
         }
 
         return optionalPetProfile.get();
@@ -40,7 +40,7 @@ public class ProfileServiceImpl implements ProfileService{
     @Override
     public PetProfile updateProfile(Long profileId, PetProfile profile) throws NotFoundException {
         PetProfile existingPetProfile = profileRepository.findById(profileId)
-                .orElseThrow(() -> new NotFoundException("Profile Not Found"));
+                .orElseThrow(() -> new NotFoundException("Profile not found"));
 
         if (profile.getName() != null && !profile.getName().isEmpty()) {
             existingPetProfile.setName(profile.getName());
@@ -75,12 +75,12 @@ public class ProfileServiceImpl implements ProfileService{
         Optional<PetProfile> optionalPetProfile = profileRepository.findById(profileId);
 
         if(!optionalPetProfile.isPresent()){
-            throw new NotFoundException("Profile Not Found");
+            throw new NotFoundException("Profile not found");
         }
 
         profileRepository.deleteById(profileId);
 
-        ErrorMessage successResponse = new ErrorMessage();
+        ResponseMessage successResponse = new ResponseMessage();
         successResponse.setStatusCode(200);
         successResponse.setStatus(HttpStatus.OK);
         successResponse.setMessage("Profile with ID " + profileId + " has been deleted successfully");
