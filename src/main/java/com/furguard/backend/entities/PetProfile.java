@@ -2,10 +2,7 @@ package com.furguard.backend.entities;
 
 import com.furguard.backend.enums.PetGender;
 import com.furguard.backend.enums.PetSpecies;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -32,6 +29,7 @@ public class PetProfile {
     private String description;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private PetSpecies species;
 
     @NotNull
@@ -47,5 +45,6 @@ public class PetProfile {
     private String color;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private PetGender gender;
 }

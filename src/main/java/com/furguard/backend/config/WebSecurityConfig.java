@@ -17,8 +17,10 @@ public class WebSecurityConfig {
 
     private static final String[] WHITELIST = {
             "/",
-            "/register",
-            "/user/activate"
+            "/user/register",
+            "/user/activate",
+
+            "/profile/**"
     };
 
     @Bean

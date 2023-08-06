@@ -36,13 +36,9 @@ public class User {
     private String mobileNumber;
 
     @NotNull
-    private String address;
-
-    @NotNull
     private Boolean isActive = false;
 
-
-    @Column(length = 64)
+    @Column(length = 32)
     private String activationToken;
 
     private LocalDateTime activationTokenExpiry;

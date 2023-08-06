@@ -1,9 +1,23 @@
 server:
   port: 8080
 
+base:
+  url: http://localhost:8080
+
 spring:
   profiles:
     active: dev
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: vp.code.labs@gmail.com
+    password: pyyihpaiknagzeys
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 ---
 

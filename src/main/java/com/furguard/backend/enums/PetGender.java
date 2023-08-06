@@ -1,7 +1,7 @@
 package com.furguard.backend.enums;
 
 public enum PetGender {
-    Male,
+    MALE,
 
-    Female,
+    FEMALE,
 }
