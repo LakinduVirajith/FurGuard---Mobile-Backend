@@ -6,6 +6,7 @@ import com.furguard.backend.errors.AlreadyExistEmailException;
 import com.furguard.backend.errors.InvalidTokenException;
 import com.furguard.backend.errors.NotFoundException;
 import com.furguard.backend.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,25 +19,19 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
 
     private final EmailService emailService;
 
-    private final PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, EmailService emailService) {
-        this.userRepository = userRepository;
-        this.emailService = emailService;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public ResponseEntity userRegister(User user) throws AlreadyExistEmailException {
-        User emailCondition = userRepository.findByEmailIgnoreCase(user.getEmail());
-        if(emailCondition != null){
+        Optional<User> emailCondition = userRepository.findByEmail(user.getEmail());
+        if(emailCondition.isPresent()){
             throw new AlreadyExistEmailException("Email already exists");
         }
 

@@ -4,19 +4,17 @@ import com.furguard.backend.entities.PetProfile;
 import com.furguard.backend.errors.NotFoundException;
 import com.furguard.backend.services.ProfileService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/furry ")
+@RequiredArgsConstructor
 public class ProfileController {
 
-    private ProfileService profileService;
-
-    @Autowired
-    public ProfileController(ProfileService profileService) {
-        this.profileService = profileService;
-    }
+    private final ProfileService profileService;
 
     @PostMapping("/profile")
     public PetProfile saveProfile(@Valid @RequestBody PetProfile profile){

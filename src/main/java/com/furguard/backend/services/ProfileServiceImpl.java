@@ -4,6 +4,7 @@ import com.furguard.backend.entities.ResponseMessage;
 import com.furguard.backend.entities.PetProfile;
 import com.furguard.backend.errors.NotFoundException;
 import com.furguard.backend.repositories.ProfileRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProfileServiceImpl implements ProfileService{
 
     private final ProfileRepository profileRepository;
-
-    @Autowired
-    public ProfileServiceImpl(ProfileRepository profileRepository) {
-        this.profileRepository = profileRepository;
-    }
 
     @Override
     public PetProfile postProfile(PetProfile profile) {
