@@ -4,9 +4,13 @@ server:
 base:
   url: http://localhost:8080
 
-jwt:
-  secret:
-    key: 59ae2b35cca7b68cb0117872cf23ed15eb3cc668b7cd48c394d336b375fa0326
+application:
+  security:
+    jwt:
+      secret-key: 59ae2b35cca7b68cb0117872cf23ed15eb3cc668b7cd48c394d336b375fa0326
+      expiration: 86400000 #ONE DAY
+      refresh-token:
+        expiration: 604800000 #7 DAYS
 
 spring:
   profiles:
@@ -14,8 +18,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: "your email address"
-    password: "your password"
+    username: vp.code.labs@gmail.com
+    password: pyyihpaiknagzeys
     properties:
       mail:
         smtp:

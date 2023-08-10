@@ -19,8 +19,14 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    @Value("${jwt.secret.key}")
+    @Value("${application.security.jwt.secret-key}")
     private String SECRET_KEY;
+
+    @Value("${application.security.jwt.expiration}")
+    private long JWT_EXPIRATION;
+
+    @Value("${application.security.jwt.refresh-token.expiration}")
+    private long REFRESH_EXPIRATION;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -36,12 +42,20 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Objects> extractClaims, UserDetails userDetails){
+        return buildToken(extractClaims, userDetails, JWT_EXPIRATION);
+    }
+
+    public String generateRefreshToken(UserDetails userDetails){
+        return buildToken(new HashMap<>(), userDetails, REFRESH_EXPIRATION);
+    }
+
+    private String buildToken(Map<String, Objects> extractClaims, UserDetails userDetails, long expiration){
         return Jwts
                 .builder()
                 .setClaims(extractClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration((new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)))
+                .setExpiration((new Date(System.currentTimeMillis() + expiration)))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -64,7 +78,7 @@ public class JwtService {
                 .parserBuilder()
                 .setSigningKey(getSignInKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 

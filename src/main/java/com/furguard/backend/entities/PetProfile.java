@@ -47,4 +47,12 @@ public class PetProfile {
     @NotNull
     @Enumerated(EnumType.STRING)
     private PetGender gender;
+
+    @NotNull
+    private Boolean isActive = true;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

@@ -1,4 +1,4 @@
-package com.furguard.backend.entities;
+package com.furguard.backend.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

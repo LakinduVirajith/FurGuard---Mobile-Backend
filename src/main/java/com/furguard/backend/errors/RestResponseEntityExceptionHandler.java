@@ -12,14 +12,14 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(AlreadyExistEmailException.class)
-    public ResponseEntity<ResponseMessage> AlreadyExistEmailException(AlreadyExistEmailException exception){
+    @ExceptionHandler(AlreadyExistException.class)
+    public ResponseEntity<ResponseMessage> AlreadyExistException(AlreadyExistException exception){
         ResponseMessage message = new ResponseMessage(409, HttpStatus.CONFLICT, exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
     }
 
-    @ExceptionHandler(InvalidTokenException.class)
-    public ResponseEntity<ResponseMessage> InvalidTokenException(InvalidTokenException exception){
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ResponseMessage> BadRequestException(BadRequestException exception){
         ResponseMessage message = new ResponseMessage(400, HttpStatus.BAD_REQUEST, exception.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
     }

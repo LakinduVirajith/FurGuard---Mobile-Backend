@@ -1,5 +1,6 @@
 package com.furguard.backend.entities;
 
+import com.furguard.backend.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -7,10 +8,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,13 +33,17 @@ public class User implements UserDetails {
     private String password;
 
     @NotNull
-    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Not a Valid Email")
+    @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Not a Valid Email")
     private String email;
 
     @NotNull
     @Pattern(regexp = "^[0-9]*$", message = "Mobile number must contain only numbers")
     @Size(max = 15, message = "Not a valid Mobile")
     private String mobileNumber;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private UserRole role = UserRole.USER;
 
     @NotNull
     private Boolean isActive = false;
@@ -46,9 +53,15 @@ public class User implements UserDetails {
 
     private LocalDateTime activationTokenExpiry;
 
+    @OneToOne(mappedBy = "user")
+    private Token token;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private PetProfile petProfile;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
