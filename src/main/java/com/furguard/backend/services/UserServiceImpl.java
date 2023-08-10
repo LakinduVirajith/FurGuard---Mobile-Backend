@@ -1,12 +1,13 @@
 package com.furguard.backend.services;
 
+import com.furguard.backend.common.CommonFunctions;
 import com.furguard.backend.entities.ResponseMessage;
 import com.furguard.backend.entities.User;
-import com.furguard.backend.errors.AlreadyExistEmailException;
-import com.furguard.backend.errors.InvalidTokenException;
+import com.furguard.backend.errors.AlreadyExistException;
+import com.furguard.backend.errors.BadRequestException;
 import com.furguard.backend.errors.NotFoundException;
 import com.furguard.backend.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,26 +19,22 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
 
+    private final CommonFunctions commonFunctions;
+
     private final EmailService emailService;
 
-    private final PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, EmailService emailService) {
-        this.userRepository = userRepository;
-        this.emailService = emailService;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public ResponseEntity userRegister(User user) throws AlreadyExistEmailException {
-        User emailCondition = userRepository.findByEmailIgnoreCase(user.getEmail());
-        if(emailCondition != null){
-            throw new AlreadyExistEmailException("Email already exists");
+    public ResponseEntity userRegister(User user) throws AlreadyExistException {
+        Optional<User> emailCondition = userRepository.findByEmail(user.getEmail());
+        if(emailCondition.isPresent()){
+            throw new AlreadyExistException("Email already exists");
         }
 
         // Encode Password using passwordEncoder
@@ -70,16 +67,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity activate(String token) throws NotFoundException, InvalidTokenException {
-        User user = userRepository.findByActivationToken(token);
-
-        if(user == null){
-            throw new NotFoundException("User not found");
-        }
+    public ResponseEntity activate(String token) throws NotFoundException, BadRequestException {
+        User user = userRepository.findByActivationToken(token)
+                .orElseThrow(() -> new NotFoundException("User not found"));
 
         LocalDateTime activationTokenExpiry = user.getActivationTokenExpiry();
         if (activationTokenExpiry.isBefore(LocalDateTime.now())) {
-            throw new InvalidTokenException("Activation token has expired");
+            throw new BadRequestException("Activation token has expired");
         }
 
         user.setIsActive(true);
@@ -94,15 +88,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity deactivate(Long id) throws NotFoundException {
-        Optional<User> user = userRepository.findById(id);
+    public ResponseEntity deactivate(String token) throws NotFoundException {
+        User user = commonFunctions.getUser(token);
 
-        if(!user.isPresent()){
+        if(user == null){
             throw new NotFoundException("User not found");
         }
 
-        user.get().setIsActive(false);
-        userRepository.save(user.get());
+        user.setIsActive(false);
+        userRepository.save(user);
 
         ResponseMessage successResponse = new ResponseMessage();
         successResponse.setStatusCode(200);
