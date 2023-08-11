@@ -35,4 +35,10 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         ResponseMessage message = new ResponseMessage(404, HttpStatus.NOT_FOUND, exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
+
+    @ExceptionHandler(UnauthorizedAccessException.class)
+    public ResponseEntity<ResponseMessage> UnauthorizedAccessException(UnauthorizedAccessException exception){
+        ResponseMessage message = new ResponseMessage(401, HttpStatus.UNAUTHORIZED, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(message);
+    }
 }

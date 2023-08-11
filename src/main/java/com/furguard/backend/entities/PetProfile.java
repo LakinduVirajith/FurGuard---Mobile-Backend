@@ -52,7 +52,6 @@ public class PetProfile {
     private Boolean isActive = true;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "p_user_id")
     private User user;
-
 }

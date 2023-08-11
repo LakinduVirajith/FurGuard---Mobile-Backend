@@ -53,11 +53,14 @@ public class User implements UserDetails {
 
     private LocalDateTime activationTokenExpiry;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Token token;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private PetProfile petProfile;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmergencyContact> emergencyContacts;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
