@@ -10,6 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -54,4 +56,7 @@ public class PetProfile {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "p_user_id")
     private User user;
+
+    @OneToMany(mappedBy = "petProfile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vaccination> vaccinations;
 }

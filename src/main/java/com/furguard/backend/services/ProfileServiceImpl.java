@@ -27,8 +27,8 @@ public class ProfileServiceImpl implements ProfileService{
     private final ModelMapper modelMapper;
 
     @Override
-    public PetProfileDTO saveProfile(String token, PetProfile profile) throws AlreadyExistException, NotFoundException {
-        User user = commonFunctions.getUser(token);
+    public PetProfileDTO saveProfile(PetProfile profile) throws AlreadyExistException, NotFoundException {
+        User user = commonFunctions.getUser();
         Optional<PetProfile> optionalPetProfile = profileRepository.findByUserUserId(user.getUserId());
 
         if (optionalPetProfile.isPresent()) {
@@ -59,8 +59,8 @@ public class ProfileServiceImpl implements ProfileService{
     }
 
     @Override
-    public PetProfileDTO fetchProfileById(String token) throws NotFoundException {
-        Long userId = commonFunctions.getUserId(token);
+    public PetProfileDTO fetchProfileById() throws NotFoundException {
+        Long userId = commonFunctions.getUserId();
         Optional<PetProfile> optionalPetProfile = profileRepository.findByUserUserId(userId);
 
         if (optionalPetProfile.isEmpty() || !optionalPetProfile.get().getIsActive()) {
@@ -71,8 +71,8 @@ public class ProfileServiceImpl implements ProfileService{
     }
 
     @Override
-    public PetProfileDTO updateProfile(String token, PetProfile profile) throws NotFoundException {
-        Long userId = commonFunctions.getUserId(token);
+    public PetProfileDTO updateProfile(PetProfile profile) throws NotFoundException {
+        Long userId = commonFunctions.getUserId();
         Optional<PetProfile> optionalPetProfile = profileRepository.findByUserUserId(userId);
 
         if (optionalPetProfile.isEmpty() || !optionalPetProfile.get().getIsActive()) {
@@ -108,8 +108,8 @@ public class ProfileServiceImpl implements ProfileService{
     }
 
     @Override
-    public ResponseEntity deleteProfile(String token) throws NotFoundException {
-        Long userId = commonFunctions.getUserId(token);
+    public ResponseEntity deleteProfile() throws NotFoundException {
+        Long userId = commonFunctions.getUserId();
         Optional<PetProfile> optionalPetProfile = profileRepository.findByUserUserId(userId);
 
         if(optionalPetProfile.isEmpty()){

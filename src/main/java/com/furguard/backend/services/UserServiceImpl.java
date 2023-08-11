@@ -88,8 +88,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity deactivate(String token) throws NotFoundException {
-        User user = commonFunctions.getUser(token);
+    public ResponseEntity deactivate() throws NotFoundException {
+        User user = commonFunctions.getUser();
 
         if(user == null){
             throw new NotFoundException("User not found");

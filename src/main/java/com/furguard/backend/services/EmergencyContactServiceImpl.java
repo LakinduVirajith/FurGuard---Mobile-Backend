@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,8 +26,8 @@ public class EmergencyContactServiceImpl implements EmergencyContactService{
     private final ModelMapper modelMapper;
 
     @Override
-    public ResponseEntity addContact(String token, EmergencyContact contact) throws NotFoundException {
-        User user = commonFunctions.getUser(token);
+    public ResponseEntity addContact(EmergencyContact contact) throws NotFoundException {
+        User user = commonFunctions.getUser();
 
         contact.setUser(user);
         contactRepository.save(contact);
@@ -42,8 +41,8 @@ public class EmergencyContactServiceImpl implements EmergencyContactService{
     }
 
     @Override
-    public List<EmergencyContactDTO> fetchAllContact(String token) throws NotFoundException {
-        Long userId = commonFunctions.getUserId(token);
+    public List<EmergencyContactDTO> fetchAllContact() throws NotFoundException {
+        Long userId = commonFunctions.getUserId();
         List<EmergencyContact> emergencyContacts = contactRepository.findAllByUserUserId(userId);
 
         if(emergencyContacts.isEmpty()){
@@ -60,19 +59,19 @@ public class EmergencyContactServiceImpl implements EmergencyContactService{
     }
 
     @Override
-    public EmergencyContactDTO updateContactById(String token, Long contactId, EmergencyContact contact) throws NotFoundException, UnauthorizedAccessException {
+    public EmergencyContactDTO updateContactById(Long contactId, EmergencyContact contact) throws NotFoundException, UnauthorizedAccessException {
         EmergencyContact existContact = contactRepository.findById(contactId)
                 .orElseThrow(() -> new NotFoundException("Emergency contact not found for the given ID: " + contactId));
 
-        Long userId = commonFunctions.getUserId(token);
+        Long userId = commonFunctions.getUserId();
         if(!existContact.getUser().getUserId().equals(userId)){
             throw new UnauthorizedAccessException("You are not authorized to update this contact.");
         }
 
-        if (contact.getName() != null && !existContact.getName().isEmpty()) {
+        if (!existContact.getName().isEmpty()) {
             existContact.setName(contact.getName());
         }
-        if (contact.getMobileNumber() != null && !existContact.getMobileNumber().isEmpty()) {
+        if (!existContact.getMobileNumber().isEmpty()) {
             existContact.setMobileNumber(contact.getMobileNumber());
         }
         contactRepository.save(existContact);
@@ -81,11 +80,11 @@ public class EmergencyContactServiceImpl implements EmergencyContactService{
     }
 
     @Override
-    public ResponseEntity deleteById(String token, Long contactId) throws NotFoundException, UnauthorizedAccessException {
+    public ResponseEntity deleteById(Long contactId) throws NotFoundException, UnauthorizedAccessException {
         EmergencyContact existContact = contactRepository.findById(contactId)
                 .orElseThrow(() -> new NotFoundException("The requested emergency contact could not be found."));
 
-        Long userId = commonFunctions.getUserId(token);
+        Long userId = commonFunctions.getUserId();
         if(!existContact.getUser().getUserId().equals(userId)){
             throw new UnauthorizedAccessException("You are not authorized to update this contact.");
         }

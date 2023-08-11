@@ -11,5 +11,5 @@ public interface UserService {
 
     ResponseEntity activate(String token) throws NotFoundException, BadRequestException;
 
-    ResponseEntity deactivate(String token) throws NotFoundException;
+    ResponseEntity deactivate() throws NotFoundException;
 }

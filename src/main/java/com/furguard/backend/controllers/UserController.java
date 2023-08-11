@@ -71,8 +71,8 @@ public class UserController {
             summary = "Deactivate Account",
             description = "Deactivate a user account by providing the unique user ID."
     )
-    public ResponseEntity userDeactivate(@RequestHeader("Authorization") String token) throws NotFoundException {
-        return userService.deactivate(token);
+    public ResponseEntity userDeactivate() throws NotFoundException {
+        return userService.deactivate();
     }
 
     @PutMapping("/logout")
