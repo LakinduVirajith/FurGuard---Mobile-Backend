@@ -1,7 +1,7 @@
 package com.furguard.backend.config;
 
 import com.furguard.backend.common.CommonFunctions;
-import com.furguard.backend.repositories.TokenRepository;
+import com.furguard.backend.repository.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

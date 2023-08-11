@@ -1,8 +1,8 @@
 package com.furguard.backend.auth;
 
-import com.furguard.backend.errors.BadRequestException;
-import com.furguard.backend.errors.InvalidUserException;
-import com.furguard.backend.errors.NotFoundException;
+import com.furguard.backend.exception.BadRequestException;
+import com.furguard.backend.exception.InvalidUserException;
+import com.furguard.backend.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
