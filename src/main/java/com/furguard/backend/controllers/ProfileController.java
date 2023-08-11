@@ -25,8 +25,8 @@ public class ProfileController {
             summary = "Save Pet Profile",
             description = "Create a pet's profile. Provide necessary details to save the pet's information."
     )
-    public PetProfileDTO saveProfile(@RequestHeader("Authorization") String token, @Valid @RequestBody PetProfile profile) throws AlreadyExistException, NotFoundException {
-        return profileService.saveProfile(token, profile);
+    public PetProfileDTO saveProfile(@Valid @RequestBody PetProfile profile) throws AlreadyExistException, NotFoundException {
+        return profileService.saveProfile(profile);
     }
 
     @GetMapping("/profile")
@@ -34,8 +34,8 @@ public class ProfileController {
             summary = "Get Pet Profile",
             description = "Retrieve a pet's profile by providing the unique profile ID."
     )
-    public PetProfileDTO getProfile(@RequestHeader("Authorization") String token) throws NotFoundException {
-        return profileService.fetchProfileById(token);
+    public PetProfileDTO getProfile() throws NotFoundException {
+        return profileService.fetchProfileById();
     }
 
     @PutMapping("/profile")
@@ -43,8 +43,8 @@ public class ProfileController {
             summary = "Update Pet Profile",
             description = "Update a pet's profile by providing the unique profile ID and the updated details. If the profile ID exists, this operation updates the pet's profile information."
     )
-    public PetProfileDTO updateProfile(@RequestHeader("Authorization") String token, @RequestBody PetProfile profile) throws NotFoundException {
-        return profileService.updateProfile(token, profile);
+    public PetProfileDTO updateProfile(@RequestBody PetProfile profile) throws NotFoundException {
+        return profileService.updateProfile(profile);
     }
 
     @DeleteMapping("/profile")
@@ -52,7 +52,7 @@ public class ProfileController {
             summary = "Delete Pet Profile",
             description = "Delete a pet's profile by providing the unique profile ID. If the profile ID exists, this operation deletes the pet's profile."
     )
-    public ResponseEntity deleteProfile(@RequestHeader("Authorization") String token) throws NotFoundException {
-        return profileService.deleteProfile(token);
+    public ResponseEntity deleteProfile() throws NotFoundException {
+        return profileService.deleteProfile();
     }
 }

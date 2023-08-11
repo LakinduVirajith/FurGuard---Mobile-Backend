@@ -7,11 +7,11 @@ import com.furguard.backend.errors.NotFoundException;
 import org.springframework.http.ResponseEntity;
 
 public interface ProfileService {
-    PetProfileDTO saveProfile(String token, PetProfile profile) throws AlreadyExistException, NotFoundException;
+    PetProfileDTO saveProfile(PetProfile profile) throws AlreadyExistException, NotFoundException;
 
-    PetProfileDTO fetchProfileById(String token) throws NotFoundException;
+    PetProfileDTO fetchProfileById() throws NotFoundException;
 
-    PetProfileDTO updateProfile(String token, PetProfile profile) throws NotFoundException;
+    PetProfileDTO updateProfile(PetProfile profile) throws NotFoundException;
 
-    ResponseEntity deleteProfile(String token) throws NotFoundException;
+    ResponseEntity deleteProfile() throws NotFoundException;
 }

@@ -27,8 +27,8 @@ public class EmergencyContactController {
             summary = "Add Emergency Contact",
             description = "Add a new emergency contact. Provide necessary details to create the contact."
     )
-    public ResponseEntity addContact(@RequestHeader("Authorization") String token, @Valid @RequestBody EmergencyContact contact) throws NotFoundException {
-        return contactService.addContact(token, contact);
+    public ResponseEntity addContact(@Valid @RequestBody EmergencyContact contact) throws NotFoundException {
+        return contactService.addContact(contact);
     }
 
     @GetMapping("/contact")
@@ -36,8 +36,8 @@ public class EmergencyContactController {
             summary = "Fetch All Emergency Contacts",
             description = "Retrieve a list of all emergency contacts associated with the user."
     )
-    public List<EmergencyContactDTO> fetchAllContact(@RequestHeader("Authorization") String token) throws NotFoundException {
-        return contactService.fetchAllContact(token);
+    public List<EmergencyContactDTO> fetchAllContact() throws NotFoundException {
+        return contactService.fetchAllContact();
     }
 
     @PutMapping("/contact/{id}")
@@ -45,8 +45,8 @@ public class EmergencyContactController {
             summary = "Update Emergency Contact",
             description = "Update an existing emergency contact. Provide necessary details to update the contact."
     )
-    public EmergencyContactDTO updateContact(@RequestHeader("Authorization") String token, @PathVariable("id") Long contactId, @Valid @RequestBody EmergencyContact contact) throws NotFoundException, UnauthorizedAccessException {
-        return contactService.updateContactById(token, contactId, contact);
+    public EmergencyContactDTO updateContact(@PathVariable("id") Long contactId, @Valid @RequestBody EmergencyContact contact) throws NotFoundException, UnauthorizedAccessException {
+        return contactService.updateContactById(contactId, contact);
     }
 
     @DeleteMapping("/contact/{id}")
@@ -54,7 +54,7 @@ public class EmergencyContactController {
             summary = "Delete Emergency Contact",
             description = "Delete an existing emergency contact by ID."
     )
-    public ResponseEntity deleteContact(@RequestHeader("Authorization") String token, @PathVariable("id") Long contactId) throws NotFoundException, UnauthorizedAccessException {
-        return  contactService.deleteById(token, contactId);
+    public ResponseEntity deleteContact(@PathVariable("id") Long contactId) throws NotFoundException, UnauthorizedAccessException {
+        return  contactService.deleteById(contactId);
     }
 }
