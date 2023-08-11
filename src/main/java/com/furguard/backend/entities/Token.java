@@ -27,7 +27,7 @@ public class Token {
 
     private boolean revoked = false;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "t_user_id")
     private User user;
 }
