@@ -37,7 +37,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/fur_guard
-    password: Lakindu@MySQL
+    password: "YOUR PASSWORD"
   jpa:
     show-sql: 'true'
     hibernate:
@@ -52,7 +52,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/qa_db
     username: root
-    password: "YOUR PASSWORD"
+    password: Lakindu@MySQL
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true

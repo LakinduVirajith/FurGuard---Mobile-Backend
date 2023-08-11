@@ -1,11 +1,11 @@
 package com.furguard.backend.common;
 
 import com.furguard.backend.config.JwtService;
-import com.furguard.backend.entities.PetProfile;
-import com.furguard.backend.entities.User;
-import com.furguard.backend.errors.NotFoundException;
-import com.furguard.backend.repositories.ProfileRepository;
-import com.furguard.backend.repositories.UserRepository;
+import com.furguard.backend.entity.PetProfile;
+import com.furguard.backend.entity.User;
+import com.furguard.backend.exception.NotFoundException;
+import com.furguard.backend.repository.ProfileRepository;
+import com.furguard.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
