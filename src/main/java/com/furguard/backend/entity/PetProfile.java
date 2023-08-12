@@ -62,4 +62,7 @@ public class PetProfile {
 
     @OneToMany(mappedBy = "petProfile", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Allergy> allergies;
+
+    @OneToMany(mappedBy = "petProfile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Medication> medications;
 }
