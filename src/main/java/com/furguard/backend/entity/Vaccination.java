@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,4 +32,7 @@ public class Vaccination {
 
     @NotNull
     private LocalDate expirationDate;
+
+    @OneToMany(mappedBy = "vaccination", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VaccinationReminder> vaccinationReminders;
 }

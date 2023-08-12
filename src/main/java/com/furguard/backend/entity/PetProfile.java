@@ -68,4 +68,7 @@ public class PetProfile {
 
     @OneToMany(mappedBy = "petProfile")
     private List<MedicationReminder> medicationReminders;
+
+    @OneToMany(mappedBy = "petProfile")
+    private List<VaccinationReminder> vaccinationReminders;
 }
