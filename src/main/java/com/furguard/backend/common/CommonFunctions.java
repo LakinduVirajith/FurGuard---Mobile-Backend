@@ -1,9 +1,11 @@
 package com.furguard.backend.common;
 
 import com.furguard.backend.config.JwtService;
-import com.furguard.backend.entities.User;
-import com.furguard.backend.errors.NotFoundException;
-import com.furguard.backend.repositories.UserRepository;
+import com.furguard.backend.entity.PetProfile;
+import com.furguard.backend.entity.User;
+import com.furguard.backend.exception.NotFoundException;
+import com.furguard.backend.repository.ProfileRepository;
+import com.furguard.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +16,20 @@ import java.util.Optional;
 public class CommonFunctions {
 
     private final JwtService jwtService;
-
     private final UserRepository userRepository;
+    private final ProfileRepository profileRepository;
+    private static String token;
 
-    public Long getUserId(String token) throws NotFoundException {
-        var jwt = token.substring(7);
-        var email = jwtService.extractUsername(jwt);
-        Optional<User> user = userRepository.findByEmail(email);
+    public void storeJWT(String jwt) {
+        token = jwt;
+    }
+
+    public String getUserEmail(){
+        return jwtService.extractUsername(token);
+    }
+
+    public Long getUserId() throws NotFoundException {
+        Optional<User> user = userRepository.findByEmail(getUserEmail());
 
         if(user.isPresent()){
             return user.get().getUserId();
@@ -29,15 +38,35 @@ public class CommonFunctions {
         }
     }
 
-    public User getUser(String token) throws NotFoundException {
-        var jwt = token.substring(7);
-        var email = jwtService.extractUsername(jwt);
-        Optional<User> user = userRepository.findByEmail(email);
+    public User getUser() throws NotFoundException {
+        Optional<User> user = userRepository.findByEmail(getUserEmail());
 
         if(user.isPresent()){
             return user.get();
         }else{
-           throw new NotFoundException("Profile not found");
+            throw new NotFoundException("Profile not found");
+        }
+    }
+
+    public Long getPetId() throws NotFoundException {
+        Long userId = getUserId();
+        Optional<PetProfile> profile = profileRepository.findByUserUserId(userId);
+
+        if(profile.isPresent()){
+            return profile.get().getPetId();
+        }else{
+            throw new NotFoundException("Profile not found");
+        }
+    }
+
+    public PetProfile getPetProfile() throws NotFoundException {
+        Long userId = getUserId();
+        Optional<PetProfile> profile = profileRepository.findByUserUserId(userId);
+
+        if(profile.isPresent()){
+            return profile.get();
+        }else{
+            throw new NotFoundException("Profile not found");
         }
     }
 }

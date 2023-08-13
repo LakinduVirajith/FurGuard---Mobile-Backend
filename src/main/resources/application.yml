@@ -8,9 +8,9 @@ application:
   security:
     jwt:
       secret-key: 59ae2b35cca7b68cb0117872cf23ed15eb3cc668b7cd48c394d336b375fa0326
-      expiration: 86400000 #ONE DAY
+      expiration: 7200000 #TWO HOURS
       refresh-token:
-        expiration: 604800000 #7 DAYS
+        expiration: 2419200000 #ONE MONTH
 
 spring:
   profiles:
@@ -18,8 +18,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: vp.code.labs@gmail.com
-    password: pyyihpaiknagzeys
+    username: "YOUR EMAIL"
+    password: "YOUR PASSWORD"
     properties:
       mail:
         smtp:
@@ -37,9 +37,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/fur_guard
-    password: Lakindu@MySQL
+    password: "YOUR PASSWORD"
   jpa:
-    show-sql: 'true'
+    show-sql: true
     hibernate:
       ddl-auto: update
 

@@ -2,16 +2,16 @@ package com.furguard.backend.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.furguard.backend.config.JwtService;
-import com.furguard.backend.entities.ResponseMessage;
-import com.furguard.backend.entities.Token;
-import com.furguard.backend.entities.User;
+import com.furguard.backend.entity.ResponseMessage;
+import com.furguard.backend.entity.Token;
+import com.furguard.backend.entity.User;
 import com.furguard.backend.enums.TokenType;
-import com.furguard.backend.errors.BadRequestException;
-import com.furguard.backend.errors.InvalidUserException;
-import com.furguard.backend.errors.NotFoundException;
-import com.furguard.backend.repositories.TokenRepository;
-import com.furguard.backend.repositories.UserRepository;
-import com.furguard.backend.services.EmailService;
+import com.furguard.backend.exception.BadRequestException;
+import com.furguard.backend.exception.InvalidUserException;
+import com.furguard.backend.exception.NotFoundException;
+import com.furguard.backend.repository.TokenRepository;
+import com.furguard.backend.repository.UserRepository;
+import com.furguard.backend.service.EmailService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -77,6 +77,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
         refreshToken = authHeader.substring(7);
         userEmail = jwtService.extractUsername(refreshToken);
+        System.out.println(userEmail);
 
         Optional<User> optionalUser = userRepository.findByEmail(userEmail);
         if(optionalUser.isPresent() && !optionalUser.get().getIsActive()){
@@ -135,7 +136,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
             token.setExpired(false);
             token.setRevoked(false);
         }else{
-            token = Token.builder().user(user).token(jwtToken).tokenType(TokenType.BEARER).expired(false).revoked(false).build();
+            token = Token.builder().user(user).token(jwtToken).tokenType(TokenType.Bearer).expired(false).revoked(false).build();
         }
         tokenRepository.save(token);
     }

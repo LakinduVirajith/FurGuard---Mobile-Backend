@@ -1,6 +1,7 @@
 package com.furguard.backend.config;
 
-import com.furguard.backend.repositories.TokenRepository;
+import com.furguard.backend.common.CommonFunctions;
+import com.furguard.backend.repository.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,10 +23,9 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-
     private final UserDetailsService userDetailsService;
-
     private final TokenRepository tokenRepository;
+    private final CommonFunctions commonFunctions;
 
     @Override
     protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws ServletException, IOException {
@@ -40,6 +40,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         jwt = authHeader.substring(7);
         userEmail = jwtService.extractUsername(jwt);
+        commonFunctions.storeJWT(jwt);
 
         if(userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);

@@ -1,6 +1,6 @@
 package com.furguard.backend.config;
 
-import com.furguard.backend.repositories.UserRepository;
+import com.furguard.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
