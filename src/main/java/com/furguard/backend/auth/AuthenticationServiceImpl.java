@@ -77,6 +77,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
         refreshToken = authHeader.substring(7);
         userEmail = jwtService.extractUsername(refreshToken);
+        System.out.println(userEmail);
 
         Optional<User> optionalUser = userRepository.findByEmail(userEmail);
         if(optionalUser.isPresent() && !optionalUser.get().getIsActive()){
@@ -135,7 +136,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
             token.setExpired(false);
             token.setRevoked(false);
         }else{
-            token = Token.builder().user(user).token(jwtToken).tokenType(TokenType.BEARER).expired(false).revoked(false).build();
+            token = Token.builder().user(user).token(jwtToken).tokenType(TokenType.Bearer).expired(false).revoked(false).build();
         }
         tokenRepository.save(token);
     }

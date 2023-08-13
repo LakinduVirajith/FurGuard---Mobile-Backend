@@ -43,7 +43,7 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    private UserRole role = UserRole.USER;
+    private UserRole role = UserRole.User;
 
     @NotNull
     private Boolean isActive = false;
