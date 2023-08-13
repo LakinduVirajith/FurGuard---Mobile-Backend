@@ -40,6 +40,13 @@ public class ScheduledTask {
         if(!petProfiles.isEmpty()){
             for (PetProfile profile : petProfiles) {
                 profile.setUser(null);
+                profile.setVaccinations(null);
+                profile.setMedications(null);
+                profile.setAllergies(null);
+                profile.setMedicationReminders(null);
+                profile.setVaccinationReminders(null);
+                profile.setLostPetNotice(null);
+                profile.setSafeArea(null);
                 profileRepository.delete(profile);
             }
         }

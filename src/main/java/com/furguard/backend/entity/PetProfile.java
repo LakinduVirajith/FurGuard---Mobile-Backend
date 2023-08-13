@@ -77,4 +77,7 @@ public class PetProfile {
 
     @OneToOne(mappedBy = "petProfile", cascade = CascadeType.ALL, orphanRemoval = true)
     private LostPetNotice lostPetNotice;
+
+    @OneToOne(mappedBy = "petProfile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private SafeArea safeArea;
 }
