@@ -21,6 +21,7 @@ public class WebSecurityConfig {
             "/user/register",
             "/user/activate",
             "/user/authenticate",
+            "/user/refresh-token",
 
             "/v2/api-docs",
             "/v3/api-docs",

@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -53,6 +54,8 @@ public class PetProfile {
     @NotNull
     private Boolean isActive = true;
 
+    private LocalDate deactivatedDate;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "p_user_id")
     private User user;
@@ -71,4 +74,7 @@ public class PetProfile {
 
     @OneToMany(mappedBy = "petProfile")
     private List<VaccinationReminder> vaccinationReminders;
+
+    @OneToOne(mappedBy = "petProfile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private LostPetNotice lostPetNotice;
 }

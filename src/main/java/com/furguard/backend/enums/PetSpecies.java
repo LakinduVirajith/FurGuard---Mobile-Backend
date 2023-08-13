@@ -1,11 +1,11 @@
 package com.furguard.backend.enums;
 
 public enum PetSpecies {
-    DOG,
+    Dog,
 
-    CAT,
+    Cat,
 
-    BIRD,
+    Bird,
 
-    FISH
+    Fish
 }

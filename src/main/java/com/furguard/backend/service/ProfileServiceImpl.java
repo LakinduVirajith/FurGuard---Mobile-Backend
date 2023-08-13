@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,7 @@ public class ProfileServiceImpl implements ProfileService{
                 throw new AlreadyExistException("Profile already exists");
             } else {
                 existingProfile.setIsActive(true);
+                existingProfile.setDeactivatedDate(null);
                 existingProfile.setName(profile.getName());
                 existingProfile.setImage(profile.getImage());
                 existingProfile.setDescription(profile.getDescription());
@@ -124,6 +126,7 @@ public class ProfileServiceImpl implements ProfileService{
         existingPetProfile.setWeight(null);
         existingPetProfile.setColor(null);
         existingPetProfile.setIsActive(false);
+        existingPetProfile.setDeactivatedDate(LocalDate.now());
 
         profileRepository.save(existingPetProfile);
 

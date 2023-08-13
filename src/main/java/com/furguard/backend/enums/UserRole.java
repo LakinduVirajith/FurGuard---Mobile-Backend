@@ -1,7 +1,7 @@
 package com.furguard.backend.enums;
 
 public enum UserRole {
-    USER,
+    User,
 
-    ADMIN,
+    Admin,
 }
