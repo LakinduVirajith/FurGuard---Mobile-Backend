@@ -5,7 +5,7 @@ import com.furguard.backend.dto.SafeAreaDTO;
 import com.furguard.backend.entity.PetProfile;
 import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.SafeArea;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.repository.SafeAreaRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +23,11 @@ public class SafeAreaServiceImpl implements SafeAreaService{
     private final ModelMapper modelMapper;
 
     @Override
-    public SafeAreaDTO setSafeArea(SafeArea safeArea) throws NotFoundException, AlreadyExistException {
+    public SafeAreaDTO setSafeArea(SafeArea safeArea) throws NotFoundException, ConflictException {
         PetProfile profile = commonFunctions.getPetProfile();
 
         if(profile.getSafeArea() != null){
-            throw new AlreadyExistException("This pet already has a safe area set. You can update the existing safe area.");
+            throw new ConflictException("This pet already has a safe area set. You can update the existing safe area.");
         }
 
         safeArea.setPetProfile(profile);

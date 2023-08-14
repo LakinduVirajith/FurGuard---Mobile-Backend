@@ -1,6 +1,6 @@
 package com.furguard.backend.common;
 
-import com.furguard.backend.config.JwtService;
+import com.furguard.backend.config.jwt.JwtService;
 import com.furguard.backend.entity.PetProfile;
 import com.furguard.backend.entity.User;
 import com.furguard.backend.exception.NotFoundException;

@@ -12,10 +12,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(AlreadyExistException.class)
-    public ResponseEntity<ResponseMessage> AlreadyExistException(AlreadyExistException exception){
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ResponseMessage> ConflictException(ConflictException exception){
         ResponseMessage message = new ResponseMessage(409, HttpStatus.CONFLICT, exception.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
     }
 
     @ExceptionHandler(BadRequestException.class)
@@ -24,8 +24,8 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
     }
 
-    @ExceptionHandler(InvalidUserException.class)
-    public ResponseEntity<ResponseMessage> InvalidUserException(InvalidUserException exception){
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<ResponseMessage> ForbiddenException(ForbiddenException exception){
         ResponseMessage message = new ResponseMessage(403, HttpStatus.FORBIDDEN, exception.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(message);
     }
@@ -40,5 +40,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public ResponseEntity<ResponseMessage> UnauthorizedAccessException(UnauthorizedAccessException exception){
         ResponseMessage message = new ResponseMessage(401, HttpStatus.UNAUTHORIZED, exception.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(message);
+    }
+
+    @ExceptionHandler(PreconditionRequiredException.class)
+    public ResponseEntity<ResponseMessage> PreconditionRequiredException(PreconditionRequiredException exception){
+        ResponseMessage message = new ResponseMessage(428, HttpStatus.PRECONDITION_REQUIRED, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.PRECONDITION_REQUIRED).body(message);
     }
 }

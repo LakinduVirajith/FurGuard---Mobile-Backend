@@ -1,4 +1,4 @@
-package com.furguard.backend.config;
+package com.furguard.backend.config.swagger;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;

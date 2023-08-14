@@ -1,13 +1,13 @@
 package com.furguard.backend.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.furguard.backend.config.JwtService;
+import com.furguard.backend.config.jwt.JwtService;
 import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.Token;
 import com.furguard.backend.entity.User;
 import com.furguard.backend.enums.TokenType;
 import com.furguard.backend.exception.BadRequestException;
-import com.furguard.backend.exception.InvalidUserException;
+import com.furguard.backend.exception.ForbiddenException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.repository.TokenRepository;
 import com.furguard.backend.repository.UserRepository;
@@ -38,11 +38,11 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final EmailService emailService;
 
     @Override
-    public AuthenticationResponse authenticate(AuthenticationRequest request) throws InvalidUserException {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) throws ForbiddenException {
         Optional<User> userCondition = userRepository.findByEmail(request.getEmail());
         if(userCondition.isPresent() && !userCondition.get().getIsActive()){
             regenerateActivationToken(userCondition.get());
-            throw new InvalidUserException("Your account is not activated. Please check your email to verify your account first.");
+            throw new ForbiddenException("Your account is not activated. Please check your email to verify your account first.");
         }
 
         authenticationManager.authenticate(

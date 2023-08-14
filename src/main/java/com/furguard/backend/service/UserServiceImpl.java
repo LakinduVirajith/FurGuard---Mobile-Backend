@@ -3,7 +3,7 @@ package com.furguard.backend.service;
 import com.furguard.backend.common.CommonFunctions;
 import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.User;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.BadRequestException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.repository.UserRepository;
@@ -31,10 +31,10 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public ResponseEntity userRegister(User user) throws AlreadyExistException {
+    public ResponseEntity userRegister(User user) throws ConflictException {
         Optional<User> emailCondition = userRepository.findByEmail(user.getEmail());
         if(emailCondition.isPresent()){
-            throw new AlreadyExistException("Email already exists");
+            throw new ConflictException("Email already exists");
         }
 
         // Encode Password using passwordEncoder
