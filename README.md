@@ -19,13 +19,13 @@ Welcome to FurGuard, an innovative pet management application developed using Sp
     <a href="https://www.mysql.com/">
         <img src="source/logo/Websockets.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
-    <!-- AWS-S3 LOGO -->
-    <a href="https://www.mysql.com/">
-        <img src="source/logo/AWS-S3.jpg" alt="MYSQL LOGO" height="70" />
-    </a>&nbsp;
     <!-- JAVA MAIL LOGO -->
     <a href="https://www.mysql.com/">
         <img src="source/logo/Java-Mail.jpg" alt="MYSQL LOGO" height="70" />
+    </a>&nbsp;
+    <!-- AWS-S3 LOGO -->
+    <a href="https://www.mysql.com/">
+        <img src="source/logo/AWS-S3.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- SWAGGER LOGO -->
     <a href="https://www.mysql.com/">
