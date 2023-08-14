@@ -1,0 +1,1126 @@
+{
+	"info": {
+		"_postman_id": "96f40bb3-32a0-4c52-b211-2774f69aa237",
+		"name": "FurGuard---Mobile-Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23349608"
+	},
+	"item": [
+		{
+			"name": "Furry Profile",
+			"item": [
+				{
+					"name": "Save Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYxNTA1LCJleHAiOjE2OTE3Njg3MDV9.4TZh1A3HOfo1LfucyfJ_3rANC9-ZEE36myhC87xwCTs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rocky\",\r\n    \"species\": \"Dog\",\r\n    \"breed\": \"German Shepherd\",\r\n    \"age\": 5,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/furry/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzNDYzLCJleHAiOjE2OTE3Nzk4NjN9.jK1FRrjSCROET0PGpod9Mj4G3lg1fCBreUWhipFOoEQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rocky\",\r\n    \"species\": \"Dog\",\r\n    \"breed\": \"German Shepherd\",\r\n    \"age\": 5,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/furry/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Profile By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzNDYzLCJleHAiOjE2OTE3Nzk4NjN9.jK1FRrjSCROET0PGpod9Mj4G3lg1fCBreUWhipFOoEQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/furry/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzNDYzLCJleHAiOjE2OTE3Nzk4NjN9.jK1FRrjSCROET0PGpod9Mj4G3lg1fCBreUWhipFOoEQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/furry/profile"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Lakindu De Zoysa\",\r\n    \"password\": \"Lakindu@FurGuard\",\r\n    \"email\": \"lakinduvirajith@gmail.com\",\r\n    \"mobileNumber\": \"5654656464\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Email Verification",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/activate?token=4488f1ba-c19f-4f23-b85a-feeaba2a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"activate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "4488f1ba-c19f-4f23-b85a-feeaba2a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzMzEzLCJleHAiOjE2OTE3Nzk3MTN9.m3rsqDBL8dUTGd3CPP90A20ElMrCMDg99-f0L9zVblk"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lakinduvirajith@gmail.com\",\r\n    \"password\": \"Lakindu@FurGuard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user/authenticate"
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTAwNDI1LCJleHAiOjE2OTQzMTk2MjV9.r8Dj3XijIhesZvNJk0sQyTPHCzuTLzfB_0hAkowXIjQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user/refresh-token"
+					},
+					"response": []
+				},
+				{
+					"name": "User Deactivated",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzMzEzLCJleHAiOjE2OTE3Nzk3MTN9.m3rsqDBL8dUTGd3CPP90A20ElMrCMDg99-f0L9zVblk"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Test Value\",\r\n    \"password\": \"test@1234\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"mobileNumber\": \"5654656464\",\r\n    \"address\": \"No.30 Robert De Zoysa Mawatha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/user/deactivate"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Emergency Contact",
+			"item": [
+				{
+					"name": "Save Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYxNTA1LCJleHAiOjE2OTE3Njg3MDV9.4TZh1A3HOfo1LfucyfJ_3rANC9-ZEE36myhC87xwCTs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Dr.Niroshan Dasanayake\",\r\n    \"mobileNumber\": \"0772780771\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/emergency/contact"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYxNTA1LCJleHAiOjE2OTE3Njg3MDV9.4TZh1A3HOfo1LfucyfJ_3rANC9-ZEE36myhC87xwCTs"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Dr.Niroshan Dasanayake\",\r\n    \"mobileNumber\": \"0772780771\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/emergency/contact/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYxNTA1LCJleHAiOjE2OTE3Njg3MDV9.4TZh1A3HOfo1LfucyfJ_3rANC9-ZEE36myhC87xwCTs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/emergency/contact"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYxNTA1LCJleHAiOjE2OTE3Njg3MDV9.4TZh1A3HOfo1LfucyfJ_3rANC9-ZEE36myhC87xwCTs"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/emergency/contact/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vaccination",
+			"item": [
+				{
+					"name": "Add Vaccination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODk2NjQ2LCJleHAiOjE2OTE5MDM4NDZ9.ObDfcRaqpVwDCtNymLDYza5TimItBydcfND9xyWG18E"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lyme Disease Vaccine\",\r\n    \"administeredDate\": \"2023-08-10\",\r\n    \"expirationDate\": \"2024-08-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/vaccination"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vaccination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYwMTAyLCJleHAiOjE2OTE3NjczMDJ9.z76RMAXacUAJuVR6yVOWL0W3Y7_OuiJiY2rmZ7lKCQk"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lyme Disease Vaccine\",\r\n    \"administeredDate\": \"2023-08-10\",\r\n    \"expirationDate\": \"2024-08-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/vaccination/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Vaccination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYwMTAyLCJleHAiOjE2OTE3NjczMDJ9.z76RMAXacUAJuVR6yVOWL0W3Y7_OuiJiY2rmZ7lKCQk"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/vaccination/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Vaccinations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/vaccination"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vaccination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzYxNTA1LCJleHAiOjE2OTE3Njg3MDV9.4TZh1A3HOfo1LfucyfJ_3rANC9-ZEE36myhC87xwCTs"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/profile/vaccination/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Allergy",
+			"item": [
+				{
+					"name": "Add Allergy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzY0OTE5LCJleHAiOjE2OTE3NzIxMTl9.aLT3AnRCm_enlVaWnuOYk4S1f42jWdl3dSxoNbootYs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Allergy to Pollen: This allergy is triggered by exposure to pollen from flowers, trees, and grass. Common symptoms include sneezing, watery eyes, and itching. Please take precautions to limit your pet's outdoor activities during high pollen seasons.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/allergy"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Allergy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzY0OTE5LCJleHAiOjE2OTE3NzIxMTl9.aLT3AnRCm_enlVaWnuOYk4S1f42jWdl3dSxoNbootYs"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Allergy to Pollen: This allergy is triggered by exposure to pollen from flowers, trees, and grass. Common symptoms include sneezing, watery eyes, and itching. Please take precautions to limit your pet's outdoor activities during high pollen seasons.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/allergy/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Allergy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzY0OTE5LCJleHAiOjE2OTE3NzIxMTl9.aLT3AnRCm_enlVaWnuOYk4S1f42jWdl3dSxoNbootYs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/allergy"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Allergy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNzY0OTE5LCJleHAiOjE2OTE3NzIxMTl9.aLT3AnRCm_enlVaWnuOYk4S1f42jWdl3dSxoNbootYs"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/profile/allergy/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medication Reminder",
+			"item": [
+				{
+					"name": "Add Medication Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reminderTime\": \"10:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/medication/reminder/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Medication Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reminderTime\": \"09:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/medication/reminder/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Medication Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/medication/reminder/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Medication Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/medication/reminder/all/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Medication Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/profile/medication/reminder/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vaccination Reminder",
+			"item": [
+				{
+					"name": "Add Vaccination Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reminderTime\": \"10:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/vaccination/reminder/9"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vaccination Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reminderTime\": \"09:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/vaccination/reminder/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Vaccination Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/vaccination/reminder/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch All Vaccination Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/vaccination/reminder/all/9"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vaccination Reminder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxODI3NDI2LCJleHAiOjE2OTE4MzQ2MjZ9.R7S2SyMxoxgDbVcFNjeKWuxoNc-Yk2UwEvZzGxwjqkY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/profile/vaccination/reminder/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lost Pet Notice",
+			"item": [
+				{
+					"name": "Add Lost Pet Notice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTA4ODgzLCJleHAiOjE2OTE5MTYwODN9.nUrTwQSSENbN4rczo8gFkCQXgrfo9lkdtw2i_2ncugs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lostDate\": \"2023-08-10\",\r\n    \"lastSeenLocation\": \"1254 Elm Street, Springfield, IL 12345, United States\",\r\n    \"mobileNumber\": \"0768004050\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/notice"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Lost Pet Notice",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTA4ODgzLCJleHAiOjE2OTE5MTYwODN9.nUrTwQSSENbN4rczo8gFkCQXgrfo9lkdtw2i_2ncugs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/notice"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Lost Pet Notice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTA4ODgzLCJleHAiOjE2OTE5MTYwODN9.nUrTwQSSENbN4rczo8gFkCQXgrfo9lkdtw2i_2ncugs"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lostDate\": \"2023-09-10\",\r\n    \"lastSeenLocation\": \"1254 Elm Street, Springfield, IL 12345, United States\",\r\n    \"mobileNumber\": \"0768004060\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/notice"
+					},
+					"response": []
+				},
+				{
+					"name": "Set As Found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTA4ODgzLCJleHAiOjE2OTE5MTYwODN9.nUrTwQSSENbN4rczo8gFkCQXgrfo9lkdtw2i_2ncugs"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/notice/found"
+					},
+					"response": []
+				},
+				{
+					"name": "Set As Not Found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTA4ODgzLCJleHAiOjE2OTE5MTYwODN9.nUrTwQSSENbN4rczo8gFkCQXgrfo9lkdtw2i_2ncugs"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/notice/not-found"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Lost Pet Notice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTA4ODgzLCJleHAiOjE2OTE5MTYwODN9.nUrTwQSSENbN4rczo8gFkCQXgrfo9lkdtw2i_2ncugs"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/notice"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Get All Notices",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTIxNDM3LCJleHAiOjE2OTE5Mjg2Mzd9.-WwGoOguQm_zHg_tW-TDaNLZw-hGrl9733e4f2JB-WM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/home/lost/notices"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Notice By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTIxNDM3LCJleHAiOjE2OTE5Mjg2Mzd9.-WwGoOguQm_zHg_tW-TDaNLZw-hGrl9733e4f2JB-WM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/home/lost/notice/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Reminders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTIxNDM3LCJleHAiOjE2OTE5Mjg2Mzd9.-WwGoOguQm_zHg_tW-TDaNLZw-hGrl9733e4f2JB-WM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/home/reminders"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Safe Area",
+			"item": [
+				{
+					"name": "Set Safe Area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTMwMDg2LCJleHAiOjE2OTE5MzcyODZ9.Ar4z357HsmxkFsO0hu9jmrmM5v1rvVDHiB-YuDzfZuY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"centerLatitude\": 120.5432,\r\n    \"centerLongitude\": 205.6543,\r\n    \"radius\": 1.2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/safe/area"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Safe Area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDExODgxLCJleHAiOjE2OTIwMTkwODF9.bXuIrXkDXwESyWuobB80TrotRUwXLB3cQqb9VfPA6NY"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"centerLatitude\": 40.712776,\r\n    \"centerLongitude\": -74.005974,\r\n    \"radius\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/profile/safe/area"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Safe Area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDExODgxLCJleHAiOjE2OTIwMTkwODF9.bXuIrXkDXwESyWuobB80TrotRUwXLB3cQqb9VfPA6NY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/profile/safe/area"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Safe Area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxOTMwMDg2LCJleHAiOjE2OTE5MzcyODZ9.Ar4z357HsmxkFsO0hu9jmrmM5v1rvVDHiB-YuDzfZuY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/profile/safe/area"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location Tracker",
+			"item": [
+				{
+					"name": "Set Tracker",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDIxMzE3LCJleHAiOjE2OTIwMjg1MTd9.EOV41NUpxsrkl5vRMjlg1msZeiPGcjT1Z1IW4Rtf-bo"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trackerLatitude\": 40.712776,\r\n    \"trackerLongitude\": -75.005974,\r\n    \"lastTrackingTime\": \"2023-08-14T15:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/location/tracker"
+					},
+					"response": []
+				},
+				{
+					"name": "fetch Tracker Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDIxMzE3LCJleHAiOjE2OTIwMjg1MTd9.EOV41NUpxsrkl5vRMjlg1msZeiPGcjT1Z1IW4Rtf-bo"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/location/tracker"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Tracker Off",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDIxMzE3LCJleHAiOjE2OTIwMjg1MTd9.EOV41NUpxsrkl5vRMjlg1msZeiPGcjT1Z1IW4Rtf-bo"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:8080/location/tracker"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Tracker",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDIxMzE3LCJleHAiOjE2OTIwMjg1MTd9.EOV41NUpxsrkl5vRMjlg1msZeiPGcjT1Z1IW4Rtf-bo"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/location/tracker"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Welcome Message",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjc0ODEwLCJleHAiOjE2OTE3NjEyMTB9.DXhCydB3sS_ERmcA-6MJR5hproJRnbvVgndOwl8BNm0"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/"
+			},
+			"response": []
+		}
+	]
+}
