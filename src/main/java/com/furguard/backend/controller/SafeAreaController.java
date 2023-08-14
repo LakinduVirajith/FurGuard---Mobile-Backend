@@ -2,7 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.SafeAreaDTO;
 import com.furguard.backend.entity.SafeArea;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.service.SafeAreaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +25,7 @@ public class SafeAreaController {
             summary = "Set Safe Area",
             description = "Set a safe area for the target location."
     )
-    public SafeAreaDTO setSafeArea(@Valid @RequestBody SafeArea safeArea) throws NotFoundException, AlreadyExistException {
+    public SafeAreaDTO setSafeArea(@Valid @RequestBody SafeArea safeArea) throws NotFoundException, ConflictException {
         return safeAreaService.setSafeArea(safeArea);
     }
 

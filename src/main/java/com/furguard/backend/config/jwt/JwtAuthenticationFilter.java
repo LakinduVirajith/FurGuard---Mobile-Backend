@@ -1,4 +1,4 @@
-package com.furguard.backend.config;
+package com.furguard.backend.config.jwt;
 
 import com.furguard.backend.common.CommonFunctions;
 import com.furguard.backend.repository.TokenRepository;

@@ -5,7 +5,7 @@ import com.furguard.backend.dto.LostPetNoticeDTO;
 import com.furguard.backend.entity.LostPetNotice;
 import com.furguard.backend.entity.PetProfile;
 import com.furguard.backend.entity.ResponseMessage;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.repository.LostPetNoticeRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,11 +26,11 @@ public class LostPetNoticeServiceImpl implements LostPetNoticeService{
     private final ModelMapper modelMapper;
 
     @Override
-    public LostPetNoticeDTO addNotice(LostPetNotice lostPetNotice) throws NotFoundException, AlreadyExistException {
+    public LostPetNoticeDTO addNotice(LostPetNotice lostPetNotice) throws NotFoundException, ConflictException {
         PetProfile profile = commonFunctions.getPetProfile();
 
         if(profile.getLostPetNotice() != null){
-            throw new AlreadyExistException("This pet already has a notice.");
+            throw new ConflictException("This pet already has a notice.");
         }
 
         lostPetNotice.setPetProfile(profile);

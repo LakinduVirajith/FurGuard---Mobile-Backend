@@ -2,7 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.PetProfileDTO;
 import com.furguard.backend.entity.PetProfile;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.service.ProfileService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +25,7 @@ public class ProfileController {
             summary = "Save Pet Profile",
             description = "Create a pet's profile. Provide necessary details to save the pet's information."
     )
-    public PetProfileDTO saveProfile(@Valid @RequestBody PetProfile profile) throws AlreadyExistException, NotFoundException {
+    public PetProfileDTO saveProfile(@Valid @RequestBody PetProfile profile) throws ConflictException, NotFoundException {
         return profileService.saveProfile(profile);
     }
 

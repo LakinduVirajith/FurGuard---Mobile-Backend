@@ -2,7 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.LostPetNoticeDTO;
 import com.furguard.backend.entity.LostPetNotice;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.service.LostPetNoticeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +25,7 @@ public class LostPetNoticeController {
             summary = "Add Lost Pet Notice",
             description = "Add a new lost pet notice. Provide necessary details to create the notice."
     )
-    public LostPetNoticeDTO addNotice(@Valid @RequestBody LostPetNotice lostPetNotice) throws NotFoundException, AlreadyExistException {
+    public LostPetNoticeDTO addNotice(@Valid @RequestBody LostPetNotice lostPetNotice) throws NotFoundException, ConflictException {
         return noticeService.addNotice(lostPetNotice);
     }
 

@@ -5,7 +5,7 @@ import com.furguard.backend.dto.PetProfileDTO;
 import com.furguard.backend.entity.PetProfile;
 import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.User;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.repository.ProfileRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class ProfileServiceImpl implements ProfileService{
     private final ModelMapper modelMapper;
 
     @Override
-    public PetProfileDTO saveProfile(PetProfile profile) throws AlreadyExistException, NotFoundException {
+    public PetProfileDTO saveProfile(PetProfile profile) throws ConflictException, NotFoundException {
         User user = commonFunctions.getUser();
         Optional<PetProfile> optionalPetProfile = profileRepository.findByUserUserId(user.getUserId());
 
@@ -36,7 +36,7 @@ public class ProfileServiceImpl implements ProfileService{
             PetProfile existingProfile = optionalPetProfile.get();
 
             if (existingProfile.getIsActive()) {
-                throw new AlreadyExistException("Profile already exists");
+                throw new ConflictException("Profile already exists");
             } else {
                 existingProfile.setIsActive(true);
                 existingProfile.setDeactivatedDate(null);
