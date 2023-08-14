@@ -5,35 +5,35 @@ Welcome to FurGuard, an innovative pet management application developed using Sp
 <div style="display: flex;">
     <!-- SPRING BOOT LOGO -->
     <a href="https://spring.io/projects/spring-boot/">
-            <img src="source/logo/Spring-Boot.jpg" alt="SPRING BOOT LOGO" height="55" />
+            <img src="source/logo/Spring-Boot.jpg" alt="SPRING BOOT LOGO" height="70" />
     </a>&nbsp;
     <!-- MYSQL LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/My-SQL.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/My-SQL.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- JWT LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/JWT.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/JWT.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- WEBSOCKETS LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/Websockets.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/Websockets.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- AWS-S3 LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/AWS-S3.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/AWS-S3.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- JAVA MAIL LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/Java-Mail.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/Java-Mail.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- SWAGGER LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/Swagger.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/Swagger.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- POSTMAN LOGO -->
     <a href="https://www.mysql.com/">
-        <img src="source/logo/Postman.jpg" alt="MYSQL LOGO" height="55" />
+        <img src="source/logo/Postman.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
 </div>
 
