@@ -39,7 +39,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzNDYzLCJleHAiOjE2OTE3Nzk4NjN9.jK1FRrjSCROET0PGpod9Mj4G3lg1fCBreUWhipFOoEQ"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMDgxODkwLCJleHAiOjE2OTIwODkwOTB9.pHVo0pap7BsKxfAiqhj3MFTGYoDihe7Lv2SIs3gto8E"
 							}
 						},
 						"method": "PUT",
@@ -63,7 +63,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkxNjkzNDYzLCJleHAiOjE2OTE3Nzk4NjN9.jK1FRrjSCROET0PGpod9Mj4G3lg1fCBreUWhipFOoEQ"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMTIwMDEyLCJleHAiOjE2OTIxMjcyMTJ9.90qQ93hbxNNIfkIIMa4_hd7q5mwDXNcRHXHg743qCEU"
 							}
 						},
 						"method": "GET",
@@ -1090,6 +1090,63 @@
 						"method": "DELETE",
 						"header": [],
 						"url": "http://localhost:8080/location/tracker"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Firebase Storage",
+			"item": [
+				{
+					"name": "Upload Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMTIwMDEyLCJleHAiOjE2OTIxMjcyMTJ9.90qQ93hbxNNIfkIIMa4_hd7q5mwDXNcRHXHg743qCEU"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/lakin/Desktop/UEE - System Overview Diagram.jpg"
+								}
+							]
+						},
+						"url": "http://localhost:8080/storage/upload"
+					},
+					"response": []
+				},
+				{
+					"name": "View All Images",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWtpbmR1dmlyYWppdGhAZ21haWwuY29tIiwiaWF0IjoxNjkyMTIwMDEyLCJleHAiOjE2OTIxMjcyMTJ9.90qQ93hbxNNIfkIIMa4_hd7q5mwDXNcRHXHg743qCEU"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/storage/view-all"
 					},
 					"response": []
 				}

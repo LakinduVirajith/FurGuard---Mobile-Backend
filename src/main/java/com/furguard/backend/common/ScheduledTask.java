@@ -29,6 +29,7 @@ public class ScheduledTask {
         List<LostPetNotice> foundNoticesToRemove = noticeRepository.findByIsFoundAndFoundDateBefore(true, sevenDaysAgo);
 
         for (LostPetNotice notice : foundNoticesToRemove) {
+            notice.setPetProfile(null);
             noticeRepository.deleteById(notice.getLostPetNoticeId());
         }
     }
