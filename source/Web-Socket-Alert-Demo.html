@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            color: #202020;
+        }
+        h1{
+            font-weight: 500;
+        }
+    </style>
+
+    <header>
+        <h1>WebSocket Alert Demo</h1>
+    </header>
+    <main>
+        <!-- Display alert messages and details here -->
+    </main>
+    <footer>
+        <p>&copy; 2023 terms and conditions <a href="#">FurGuard</a></p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js" integrity="sha512-1QvjE7BtotQjkq8PxLeF6P46gEpBRXuskzIVgjFpekzFVF4yjRgrQvTG1MTOJ3yQgvTteKAcO7DSZI92+u/yZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        connect();
+        function connect() {
+            var socket = new SockJS('http://localhost:8080/ws');
+            stompClient = Stomp.over(socket);
+
+            stompClient.connect({}, onConnected, onError);
+        }
+
+        function onConnected() {
+            console.log('Connected to WebSocket server');
+            stompClient.subscribe('/user/queue/alert', onMessageReceived);
+        }
+
+        function onError(error) {
+            console.log('Could not connect to WebSocket server. Please refresh this page to try again!');
+        }
+
+        // Handle incoming messages
+        function onMessageReceived(message) {
+            console.log("Triggerd")
+            var alertMessage = JSON.parse(message.body);
+            console.log('Received alert:', alertMessage);
+
+            // Display the alert message in the browser
+            const alertDiv = document.createElement("div");
+            alertDiv.textContent = `ALERT: ${alertMessage.content}`;
+            document.querySelector('main').appendChild(alertDiv);
+
+            // Display additional information
+            const detailsDiv = document.createElement("div");
+            detailsDiv.textContent = `Sender: ${alertMessage.sender}, Latitude: ${alertMessage.trackerLatitude}, Longitude: ${alertMessage.trackerLongitude}, Distance: ${alertMessage.distance} meters, Time: ${alertMessage.lastTrackingTime}`;
+            document.querySelector('main').appendChild(detailsDiv);
+
+            const lineBreak = document.createElement("br");
+            document.querySelector('main').appendChild(lineBreak);
+        }
+    </script>
+</body>
+</html>

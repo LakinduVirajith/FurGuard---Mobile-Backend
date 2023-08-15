@@ -1,5 +1,6 @@
 package com.furguard.backend.config;
 
+import com.furguard.backend.config.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ public class WebSecurityConfig {
             "/user/activate",
             "/user/authenticate",
             "/user/refresh-token",
+            "/ws/**",
 
             "/v2/api-docs",
             "/v3/api-docs",

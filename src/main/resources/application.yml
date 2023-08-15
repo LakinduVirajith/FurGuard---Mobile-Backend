@@ -1,34 +1,46 @@
+#PORT
 server:
   port: 8080
 
+#BASE URL
 base:
   url: http://localhost:8080
 
+#FIREBASE
+firebase:
+  storage:
+    bucket: "BUCKET NAME"
+    folders:
+      profile-images: "FOLDER PATH"
+
+#JWT
 application:
   security:
     jwt:
-      secret-key: 59ae2b35cca7b68cb0117872cf23ed15eb3cc668b7cd48c394d336b375fa0326
+      secret-key: "JWT KEY"
       expiration: 7200000 #TWO HOURS
       refresh-token:
         expiration: 2419200000 #ONE MONTH
 
+#ACTIVE PROFILE AND JAVA MAIL
 spring:
   profiles:
     active: dev
+  jpa:
+    open-in-view: false
   mail:
     host: smtp.gmail.com
     port: 587
-    username: "YOUR EMAIL"
-    password: "YOUR PASSWORD"
+    username: "YOUR MAIL"
+    password: "APP KEY"
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-
 ---
-
+#DEV PROFILE
 spring:
   config:
     activate:
@@ -37,14 +49,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/fur_guard
-    password: "YOUR PASSWORD"
+    password: "SQL PASSWORD"
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
 
 ---
-
+#QA PROFILE
 spring:
   config:
     activate:
@@ -52,13 +64,13 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/qa_db
     username: root
-    password: Lakindu@MySQL
+    password: "SQL PASSWORD"
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
 
 ---
-
+#PROD PROFILE
 spring:
   config:
     activate:
@@ -66,7 +78,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/prod_db
     username: root
-    password: Lakindu@MySQL
+    password: "SQL PASSWORD"
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true

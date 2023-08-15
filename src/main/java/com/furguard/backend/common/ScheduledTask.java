@@ -29,6 +29,7 @@ public class ScheduledTask {
         List<LostPetNotice> foundNoticesToRemove = noticeRepository.findByIsFoundAndFoundDateBefore(true, sevenDaysAgo);
 
         for (LostPetNotice notice : foundNoticesToRemove) {
+            notice.setPetProfile(null);
             noticeRepository.deleteById(notice.getLostPetNoticeId());
         }
     }
@@ -40,6 +41,13 @@ public class ScheduledTask {
         if(!petProfiles.isEmpty()){
             for (PetProfile profile : petProfiles) {
                 profile.setUser(null);
+                profile.setVaccinations(null);
+                profile.setMedications(null);
+                profile.setAllergies(null);
+                profile.setMedicationReminders(null);
+                profile.setVaccinationReminders(null);
+                profile.setLostPetNotice(null);
+                profile.setSafeArea(null);
                 profileRepository.delete(profile);
             }
         }

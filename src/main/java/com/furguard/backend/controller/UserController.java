@@ -4,9 +4,9 @@ import com.furguard.backend.auth.AuthenticationRequest;
 import com.furguard.backend.auth.AuthenticationResponse;
 import com.furguard.backend.auth.AuthenticationService;
 import com.furguard.backend.entity.User;
-import com.furguard.backend.exception.AlreadyExistException;
+import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.BadRequestException;
-import com.furguard.backend.exception.InvalidUserException;
+import com.furguard.backend.exception.ForbiddenException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +35,7 @@ public class UserController {
             summary = "User Registration",
             description = "Register a new user. Provide necessary details to create a user account."
     )
-    public ResponseEntity userRegister(@Valid @RequestBody User user) throws AlreadyExistException {
+    public ResponseEntity userRegister(@Valid @RequestBody User user) throws ConflictException {
         return userService.userRegister(user);
     }
 
@@ -53,7 +53,7 @@ public class UserController {
             summary = "User Authentication",
             description = "Authenticate a user by providing valid credentials."
     )
-    public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request) throws InvalidUserException {
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request) throws ForbiddenException {
         return ResponseEntity.ok().body(authenticationService.authenticate(request));
     }
 
