@@ -47,4 +47,10 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         ResponseMessage message = new ResponseMessage(428, HttpStatus.PRECONDITION_REQUIRED, exception.getMessage());
         return ResponseEntity.status(HttpStatus.PRECONDITION_REQUIRED).body(message);
     }
+
+    @ExceptionHandler(InternalServerErrorException.class)
+    public ResponseEntity<ResponseMessage> InternalServerErrorException(InternalServerErrorException exception){
+        ResponseMessage message = new ResponseMessage(500, HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+    }
 }

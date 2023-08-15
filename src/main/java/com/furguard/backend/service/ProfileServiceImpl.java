@@ -1,6 +1,7 @@
 package com.furguard.backend.service;
 
 import com.furguard.backend.common.CommonFunctions;
+import com.furguard.backend.config.firebase.FirebaseStorageServiceImpl;
 import com.furguard.backend.dto.PetProfileDTO;
 import com.furguard.backend.entity.PetProfile;
 import com.furguard.backend.entity.ResponseMessage;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class ProfileServiceImpl implements ProfileService{
 
     private final ProfileRepository profileRepository;
+
+    private final FirebaseStorageServiceImpl firebaseStorageService;
 
     private final CommonFunctions commonFunctions;
 

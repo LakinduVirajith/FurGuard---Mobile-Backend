@@ -12,27 +12,27 @@ Welcome to FurGuard, an innovative pet management application developed using Sp
         <img src="source/logo/My-SQL.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- JWT LOGO -->
-    <a href="https://www.mysql.com/">
+    <a href="https://jwt.io/">
         <img src="source/logo/JWT.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- WEBSOCKETS LOGO -->
-    <a href="https://www.mysql.com/">
+    <a href="https://socket.io/">
         <img src="source/logo/Websockets.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- JAVA MAIL LOGO -->
-    <a href="https://www.mysql.com/">
+    <a href="https://www.oracle.com/java/technologies/javamail.html">
         <img src="source/logo/Java-Mail.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
-    <!-- AWS-S3 LOGO -->
-    <a href="https://www.mysql.com/">
-        <img src="source/logo/AWS-S3.jpg" alt="MYSQL LOGO" height="70" />
+    <!-- FIREBASE -->
+    <a href="https://firebase.google.com/">
+        <img src="source/logo/Firebase.jpg" alt="FIREBASE LOGO" height="70" />
     </a>&nbsp;
     <!-- SWAGGER LOGO -->
-    <a href="https://www.mysql.com/">
+    <a href="https://swagger.io/">
         <img src="source/logo/Swagger.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
     <!-- POSTMAN LOGO -->
-    <a href="https://www.mysql.com/">
+    <a href="https://www.postman.com/">
         <img src="source/logo/Postman.jpg" alt="MYSQL LOGO" height="70" />
     </a>&nbsp;
 </div>
@@ -47,7 +47,7 @@ Welcome to FurGuard, an innovative pet management application developed using Sp
 
 [Real-time Communication with WebSocket](#real-time-communication-with-websocket)
 
-[Amazon S3 Integration for Effortless Pet Image Management](#amazon-s3-integration-for-effortless-pet-image-management)
+[Real-time Firebase Storage Integration for Effortless Pet Image Management](#real-time-firebase-storage-integration-for-effortless-pet-image-management)
 
 [Integration with Swapper API](#integration-with-swapper-api)
 
@@ -75,9 +75,9 @@ FurGuard takes account security seriously by implementing email verification usi
 
 Experience real-time updates and notifications through WebSocket programming. Receive instant alerts about your pets' activities, reminders, and community interactions, enhancing your overall user experience.
 
-## Amazon S3 Integration for Effortless Pet Image Management
+## Real-time Firebase Storage Integration for Effortless Pet Image Management
 
-FurGuard enhances your pet management experience by seamlessly integrating with Amazon S3, a cloud storage service. This integration allows you to effortlessly upload, retrieve, and manage pet images, ensuring your furry companions are showcased in all their glory.
+Elevate your pet management experience with FurGuard's integrated Firebase Storage solution. This powerful integration empowers you to effortlessly upload, retrieve, and manage your cherished pet images in the cloud, ensuring that your furry companions shine in all their glory.
 
 ## Integration with Swapper API
 
