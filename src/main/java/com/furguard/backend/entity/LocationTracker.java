@@ -29,6 +29,7 @@ public class LocationTracker {
     @NotNull
     private LocalDateTime lastTrackingTime;
 
+    @Builder.Default
     private Boolean isTrackingEnabled = true;
 
     @OneToOne

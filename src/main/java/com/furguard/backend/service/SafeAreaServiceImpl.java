@@ -66,7 +66,7 @@ public class SafeAreaServiceImpl implements SafeAreaService{
     }
 
     @Override
-    public ResponseEntity removeSafeArea() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> removeSafeArea() throws NotFoundException {
         PetProfile profile = commonFunctions.getPetProfile();
         SafeArea safeArea = profile.getSafeArea();
 

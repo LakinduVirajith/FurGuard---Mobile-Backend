@@ -1,8 +1,7 @@
 package com.furguard.backend.controller;
 
-import com.furguard.backend.dto.MedicationReminderDTO;
 import com.furguard.backend.dto.VaccinationReminderDTO;
-import com.furguard.backend.entity.MedicationReminder;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.VaccinationReminder;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
@@ -65,7 +64,7 @@ public class VaccinationReminderController {
             summary = "Remove Vaccination Reminder",
             description = "Remove a specific vaccination reminder using its unique ID."
     )
-    public ResponseEntity removeVaccination(@PathVariable("id") Long reminderId) throws UnauthorizedAccessException, NotFoundException {
+    public ResponseEntity<ResponseMessage> removeVaccination(@PathVariable("id") Long reminderId) throws UnauthorizedAccessException, NotFoundException {
         return reminderService.removeVaccination(reminderId);
     }
 }

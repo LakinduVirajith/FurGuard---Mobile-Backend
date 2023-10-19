@@ -2,6 +2,7 @@ package com.furguard.backend.service;
 
 import com.furguard.backend.dto.MedicationReminderDTO;
 import com.furguard.backend.entity.MedicationReminder;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
 import org.springframework.http.ResponseEntity;
@@ -17,5 +18,5 @@ public interface MedicationReminderService {
 
     MedicationReminderDTO updateReminder(Long reminderId, MedicationReminder reminder) throws NotFoundException, UnauthorizedAccessException;
 
-    ResponseEntity removeReminder(Long reminderId) throws NotFoundException, UnauthorizedAccessException;
+    ResponseEntity<ResponseMessage> removeReminder(Long reminderId) throws NotFoundException, UnauthorizedAccessException;
 }

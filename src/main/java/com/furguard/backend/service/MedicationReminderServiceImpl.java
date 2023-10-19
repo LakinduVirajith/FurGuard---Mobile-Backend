@@ -98,7 +98,7 @@ public class MedicationReminderServiceImpl implements MedicationReminderService{
     }
 
     @Override
-    public ResponseEntity removeReminder(Long reminderId) throws NotFoundException, UnauthorizedAccessException {
+    public ResponseEntity<ResponseMessage> removeReminder(Long reminderId) throws NotFoundException, UnauthorizedAccessException {
         Optional<MedicationReminder> reminder = reminderRepository.findById(reminderId);
 
         if(reminder.isEmpty()){

@@ -92,7 +92,7 @@ public class MedicationServiceImpl implements MedicationService{
     }
 
     @Override
-    public ResponseEntity deleteMedication(Long medicationId) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteMedication(Long medicationId) throws NotFoundException {
         Optional<Medication> medication = medicationRepository.findById(medicationId);
 
         if(medication.isEmpty()){

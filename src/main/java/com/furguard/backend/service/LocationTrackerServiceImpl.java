@@ -70,7 +70,7 @@ public class LocationTrackerServiceImpl implements LocationTrackerService{
     }
 
     @Override
-    public ResponseEntity setTrackerOff() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> setTrackerOff() throws NotFoundException {
         PetProfile profile = commonFunctions.getPetProfile();
 
         if(profile.getSafeArea().getLocationTracker() == null){
@@ -90,7 +90,7 @@ public class LocationTrackerServiceImpl implements LocationTrackerService{
     }
 
     @Override
-    public ResponseEntity removeTracker() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> removeTracker() throws NotFoundException {
         PetProfile profile = commonFunctions.getPetProfile();
 
         if(profile.getSafeArea().getLocationTracker() == null){

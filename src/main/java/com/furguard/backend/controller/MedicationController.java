@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.MedicationDTO;
 import com.furguard.backend.entity.Medication;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
 import com.furguard.backend.service.MedicationService;
@@ -63,7 +64,7 @@ public class MedicationController {
             summary = "Delete Medication",
             description = "Delete a specific medication record using its unique ID."
     )
-    public ResponseEntity deleteMedication(@PathVariable("id") Long medicationId) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteMedication(@PathVariable("id") Long medicationId) throws NotFoundException {
         return medicationService.deleteMedication(medicationId);
     }
 }

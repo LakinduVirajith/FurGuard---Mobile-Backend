@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.MedicationReminderDTO;
 import com.furguard.backend.entity.MedicationReminder;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
 import com.furguard.backend.service.MedicationReminderService;
@@ -63,7 +64,7 @@ public class MedicationReminderController {
             summary = "Remove Medication Reminder",
             description = "Remove a specific medication reminder using its unique ID."
     )
-    public ResponseEntity removeReminder(@PathVariable("id") Long reminderId) throws UnauthorizedAccessException, NotFoundException {
+    public ResponseEntity<ResponseMessage> removeReminder(@PathVariable("id") Long reminderId) throws UnauthorizedAccessException, NotFoundException {
         return reminderService.removeReminder(reminderId);
     }
 }

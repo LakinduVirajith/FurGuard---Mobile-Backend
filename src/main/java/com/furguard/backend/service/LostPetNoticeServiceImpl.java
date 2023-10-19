@@ -75,7 +75,7 @@ public class LostPetNoticeServiceImpl implements LostPetNoticeService{
     }
 
     @Override
-    public ResponseEntity setAsFound() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> setAsFound() throws NotFoundException {
         PetProfile profile = commonFunctions.getPetProfile();
         Optional<LostPetNotice> noticeOptional = noticeRepository.findById(profile.getLostPetNotice().getLostPetNoticeId());
 
@@ -97,7 +97,7 @@ public class LostPetNoticeServiceImpl implements LostPetNoticeService{
     }
 
     @Override
-    public ResponseEntity setAsNotFound() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> setAsNotFound() throws NotFoundException {
         PetProfile profile = commonFunctions.getPetProfile();
         Optional<LostPetNotice> noticeOptional = noticeRepository.findById(profile.getLostPetNotice().getLostPetNoticeId());
 
@@ -119,7 +119,7 @@ public class LostPetNoticeServiceImpl implements LostPetNoticeService{
     }
 
     @Override
-    public ResponseEntity deleteNotice() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteNotice() throws NotFoundException {
         PetProfile profile = commonFunctions.getPetProfile();
         Optional<LostPetNotice> noticeOptional = noticeRepository.findById(profile.getLostPetNotice().getLostPetNoticeId());
 

@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.EmergencyContactDTO;
 import com.furguard.backend.entity.EmergencyContact;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
 import com.furguard.backend.service.EmergencyContactService;
@@ -27,7 +28,7 @@ public class EmergencyContactController {
             summary = "Add Emergency Contact",
             description = "Add a new emergency contact. Provide necessary details to create the contact."
     )
-    public ResponseEntity addContact(@Valid @RequestBody EmergencyContact contact) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> addContact(@Valid @RequestBody EmergencyContact contact) throws NotFoundException {
         return contactService.addContact(contact);
     }
 
@@ -54,7 +55,7 @@ public class EmergencyContactController {
             summary = "Delete Emergency Contact",
             description = "Delete an existing emergency contact by ID."
     )
-    public ResponseEntity deleteContact(@PathVariable("id") Long contactId) throws NotFoundException, UnauthorizedAccessException {
+    public ResponseEntity<ResponseMessage> deleteContact(@PathVariable("id") Long contactId) throws NotFoundException, UnauthorizedAccessException {
         return  contactService.deleteById(contactId);
     }
 }

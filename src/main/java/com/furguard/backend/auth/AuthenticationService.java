@@ -1,5 +1,6 @@
 package com.furguard.backend.auth;
 
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.BadRequestException;
 import com.furguard.backend.exception.ForbiddenException;
 import com.furguard.backend.exception.NotFoundException;
@@ -14,5 +15,5 @@ public interface AuthenticationService {
 
     void refreshToken(HttpServletRequest request, HttpServletResponse response) throws NotFoundException, IOException, BadRequestException;
 
-    ResponseEntity logout(String token) throws BadRequestException;
+    ResponseEntity<ResponseMessage> logout(String token) throws BadRequestException;
 }

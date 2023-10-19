@@ -73,7 +73,7 @@ public class AllergyServiceImpl implements AllergyService{
     }
 
     @Override
-    public ResponseEntity deleteAllergy(Long allergyId) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteAllergy(Long allergyId) throws NotFoundException {
         Optional<Allergy> allergy = allergyRepository.findById(allergyId);
 
         if(allergy.isEmpty()){

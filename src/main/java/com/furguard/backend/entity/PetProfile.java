@@ -52,6 +52,7 @@ public class PetProfile {
     private PetGender gender;
 
     @NotNull
+    @Builder.Default
     private Boolean isActive = true;
 
     private LocalDate deactivatedDate;

@@ -23,8 +23,10 @@ public class Token {
     @Enumerated(EnumType.STRING)
     private TokenType tokenType;
 
+    @Builder.Default
     private boolean expired = false;
 
+    @Builder.Default
     private boolean revoked = false;
 
     @OneToOne(cascade = CascadeType.ALL)

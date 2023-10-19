@@ -26,7 +26,7 @@ public class EmergencyContactServiceImpl implements EmergencyContactService{
     private final ModelMapper modelMapper;
 
     @Override
-    public ResponseEntity addContact(EmergencyContact contact) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> addContact(EmergencyContact contact) throws NotFoundException {
         User user = commonFunctions.getUser();
 
         contact.setUser(user);
@@ -80,7 +80,7 @@ public class EmergencyContactServiceImpl implements EmergencyContactService{
     }
 
     @Override
-    public ResponseEntity deleteById(Long contactId) throws NotFoundException, UnauthorizedAccessException {
+    public ResponseEntity<ResponseMessage> deleteById(Long contactId) throws NotFoundException, UnauthorizedAccessException {
         EmergencyContact existContact = contactRepository.findById(contactId)
                 .orElseThrow(() -> new NotFoundException("The requested emergency contact could not be found."));
 

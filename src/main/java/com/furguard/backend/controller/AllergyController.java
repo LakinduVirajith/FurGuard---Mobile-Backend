@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.AllergyDTO;
 import com.furguard.backend.entity.Allergy;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
 import com.furguard.backend.service.AllergyService;
@@ -54,7 +55,7 @@ public class AllergyController {
             summary = "Delete Pet Allergy",
             description = "Delete a specific allergy record using its unique ID."
     )
-    public ResponseEntity deleteAllergy(@PathVariable("id") Long allergyId) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteAllergy(@PathVariable("id") Long allergyId) throws NotFoundException {
         return allergyService.deleteAllergy(allergyId);
     }
 }

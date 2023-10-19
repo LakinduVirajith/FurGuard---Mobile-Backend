@@ -1,6 +1,7 @@
 package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.SafeAreaDTO;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.SafeArea;
 import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
@@ -52,7 +53,7 @@ public class SafeAreaController {
             summary = "Remove Safe Area",
             description = "Remove the safe area that has been previously set."
     )
-    public ResponseEntity removeSafeArea() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> removeSafeArea() throws NotFoundException {
         return safeAreaService.removeSafeArea();
     }
 }

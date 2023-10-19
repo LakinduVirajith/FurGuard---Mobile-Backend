@@ -14,6 +14,7 @@ import com.furguard.backend.repository.UserRepository;
 import com.furguard.backend.service.EmailService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final EmailService emailService;
 
     @Override
+    @Transactional
     public AuthenticationResponse authenticate(AuthenticationRequest request) throws ForbiddenException {
         Optional<User> userCondition = userRepository.findByEmail(request.getEmail());
         if(userCondition.isPresent() && !userCondition.get().getIsActive()){
@@ -105,7 +107,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     }
 
     @Override
-    public ResponseEntity logout(String token) throws BadRequestException {
+    public ResponseEntity<ResponseMessage> logout(String token) throws BadRequestException {
         var jwt = token.substring(7);
         Optional<Token> optionalToken = tokenRepository.findByToken(jwt);
 

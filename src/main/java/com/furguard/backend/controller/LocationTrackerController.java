@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.LocationTrackerDTO;
 import com.furguard.backend.entity.LocationTracker;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.PreconditionRequiredException;
 import com.furguard.backend.service.LocationTrackerService;
@@ -43,7 +44,7 @@ public class LocationTrackerController {
             summary = "Turn Off Tracker",
             description = "Turn off the location tracker for a pet."
     )
-    public ResponseEntity setTrackerOff() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> setTrackerOff() throws NotFoundException {
         return trackerService.setTrackerOff();
     }
 
@@ -52,7 +53,7 @@ public class LocationTrackerController {
             summary = "Remove Tracker",
             description = "Remove the location tracker for a pet."
     )
-    public ResponseEntity removeTracker() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> removeTracker() throws NotFoundException {
         return trackerService.removeTracker();
     }
 }

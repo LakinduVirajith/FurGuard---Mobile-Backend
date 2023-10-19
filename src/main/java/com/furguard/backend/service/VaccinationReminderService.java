@@ -1,6 +1,7 @@
 package com.furguard.backend.service;
 
 import com.furguard.backend.dto.VaccinationReminderDTO;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.VaccinationReminder;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
@@ -17,5 +18,5 @@ public interface VaccinationReminderService {
 
     VaccinationReminderDTO updateVaccination(Long reminderId, VaccinationReminder reminder) throws NotFoundException, UnauthorizedAccessException;
 
-    ResponseEntity removeVaccination(Long reminderId) throws NotFoundException, UnauthorizedAccessException;
+    ResponseEntity<ResponseMessage> removeVaccination(Long reminderId) throws NotFoundException, UnauthorizedAccessException;
 }

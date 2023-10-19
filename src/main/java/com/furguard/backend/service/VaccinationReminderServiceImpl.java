@@ -1,7 +1,6 @@
 package com.furguard.backend.service;
 
 import com.furguard.backend.common.CommonFunctions;
-import com.furguard.backend.dto.MedicationReminderDTO;
 import com.furguard.backend.dto.VaccinationReminderDTO;
 import com.furguard.backend.entity.*;
 import com.furguard.backend.exception.NotFoundException;
@@ -95,7 +94,7 @@ public class VaccinationReminderServiceImpl implements VaccinationReminderServic
     }
 
     @Override
-    public ResponseEntity removeVaccination(Long reminderId) throws NotFoundException, UnauthorizedAccessException {
+    public ResponseEntity<ResponseMessage> removeVaccination(Long reminderId) throws NotFoundException, UnauthorizedAccessException {
         Optional<VaccinationReminder> reminder = reminderRepository.findById(reminderId);
 
         if(reminder.isEmpty()){

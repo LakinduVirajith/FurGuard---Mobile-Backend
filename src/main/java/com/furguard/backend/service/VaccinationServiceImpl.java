@@ -27,8 +27,13 @@ public class VaccinationServiceImpl implements VaccinationService{
     private final ModelMapper modelMapper;
 
     @Override
-    public VaccinationDTO addVaccination(Vaccination vaccination) throws NotFoundException {
+    public VaccinationDTO addVaccination(VaccinationDTO vaccinationDTO) throws NotFoundException {
         PetProfile profileOperation = commonFunctions.getPetProfile();
+
+        Vaccination vaccination = Vaccination.builder()
+                                    .name(vaccinationDTO.getName())
+                                    .administeredDate(vaccinationDTO.getAdministeredDate())
+                                    .expirationDate(vaccinationDTO.getExpirationDate()).build();
 
         vaccination.setPetProfile(profileOperation);
         vaccinationRepository.save(vaccination);
@@ -86,7 +91,7 @@ public class VaccinationServiceImpl implements VaccinationService{
     }
 
     @Override
-    public ResponseEntity deleteVaccination(Long vaccinationId) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteVaccination(Long vaccinationId) throws NotFoundException {
         Optional<Vaccination> vaccination = vaccinationRepository.findById(vaccinationId);
 
         if(vaccination.isEmpty()){

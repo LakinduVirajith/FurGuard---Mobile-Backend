@@ -1,6 +1,7 @@
 package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.VaccinationDTO;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.Vaccination;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
@@ -27,8 +28,8 @@ public class VaccinationController {
             summary = "Add Vaccination",
             description = "Record a new vaccination for your pet by providing the necessary details."
     )
-    public VaccinationDTO addVaccination(@Valid @RequestBody Vaccination vaccination) throws NotFoundException {
-        return vaccinationService.addVaccination(vaccination);
+    public VaccinationDTO addVaccination(@Valid @RequestBody VaccinationDTO vaccinationDTO) throws NotFoundException {
+        return vaccinationService.addVaccination(vaccinationDTO);
     }
 
     @GetMapping("/vaccination")
@@ -63,7 +64,7 @@ public class VaccinationController {
             summary = "Delete Vaccination",
             description = "Delete a specific vaccination record using its unique ID."
     )
-    public ResponseEntity deleteVaccination(@PathVariable("id") Long vaccinationId) throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteVaccination(@PathVariable("id") Long vaccinationId) throws NotFoundException {
         return vaccinationService.deleteVaccination(vaccinationId);
     }
 }

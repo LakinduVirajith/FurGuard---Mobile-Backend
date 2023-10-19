@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.PetProfileDTO;
 import com.furguard.backend.entity.PetProfile;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.service.ProfileService;
@@ -52,7 +53,7 @@ public class ProfileController {
             summary = "Delete Pet Profile",
             description = "Delete a pet's profile by providing the unique profile ID. If the profile ID exists, this operation deletes the pet's profile."
     )
-    public ResponseEntity deleteProfile() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteProfile() throws NotFoundException {
         return profileService.deleteProfile();
     }
 }

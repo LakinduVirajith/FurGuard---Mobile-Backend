@@ -3,7 +3,8 @@ package com.furguard.backend.controller;
 import com.furguard.backend.auth.AuthenticationRequest;
 import com.furguard.backend.auth.AuthenticationResponse;
 import com.furguard.backend.auth.AuthenticationService;
-import com.furguard.backend.entity.User;
+import com.furguard.backend.dto.UserDTO;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.BadRequestException;
 import com.furguard.backend.exception.ForbiddenException;
@@ -35,8 +36,8 @@ public class UserController {
             summary = "User Registration",
             description = "Register a new user. Provide necessary details to create a user account."
     )
-    public ResponseEntity userRegister(@Valid @RequestBody User user) throws ConflictException {
-        return userService.userRegister(user);
+    public ResponseEntity<ResponseMessage> userRegister(@Valid @RequestBody UserDTO userDTO) throws ConflictException {
+        return userService.userRegister(userDTO);
     }
 
     @GetMapping("/activate")
@@ -44,7 +45,7 @@ public class UserController {
             summary = "Activate User Account",
             description = "Activate a user account using an activation token received via email."
     )
-    public ResponseEntity userActivate(@RequestParam("token") String token) throws NotFoundException, BadRequestException {
+    public ResponseEntity<ResponseMessage> userActivate(@RequestParam("token") String token) throws NotFoundException, BadRequestException {
         return userService.activate(token);
     }
 
@@ -71,7 +72,7 @@ public class UserController {
             summary = "Deactivate Account",
             description = "Deactivate a user account by providing the unique user ID."
     )
-    public ResponseEntity userDeactivate() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> userDeactivate() throws NotFoundException {
         return userService.deactivate();
     }
 
@@ -80,7 +81,7 @@ public class UserController {
             summary = "Logout",
             description = "Invalidate the user's authentication token to log out."
     )
-    public ResponseEntity logout(@RequestHeader("Authorization") String token) throws BadRequestException {
+    public ResponseEntity<ResponseMessage> logout(@RequestHeader("Authorization") String token) throws BadRequestException {
         return authenticationService.logout(token);
     }
 }

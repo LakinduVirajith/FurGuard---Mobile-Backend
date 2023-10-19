@@ -1,6 +1,7 @@
 package com.furguard.backend.service;
 
 import com.furguard.backend.dto.SafeAreaDTO;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.SafeArea;
 import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
@@ -14,5 +15,5 @@ public interface SafeAreaService {
 
     SafeAreaDTO updateSafeArea(SafeArea safeArea) throws NotFoundException;
 
-    ResponseEntity removeSafeArea() throws NotFoundException;
+    ResponseEntity<ResponseMessage> removeSafeArea() throws NotFoundException;
 }

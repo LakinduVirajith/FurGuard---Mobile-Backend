@@ -41,5 +41,6 @@ public class LostPetNotice {
 
     private LocalDate foundDate;
 
+    @Builder.Default
     private Boolean isFound = false;
 }

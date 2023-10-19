@@ -2,6 +2,7 @@ package com.furguard.backend.service;
 
 import com.furguard.backend.dto.MedicationDTO;
 import com.furguard.backend.entity.Medication;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.exception.UnauthorizedAccessException;
 import org.springframework.http.ResponseEntity;
@@ -17,5 +18,5 @@ public interface MedicationService {
 
     MedicationDTO updateMedication(Long medicationId, Medication medication) throws NotFoundException, UnauthorizedAccessException;
 
-    ResponseEntity deleteMedication(Long medicationId) throws NotFoundException;
+    ResponseEntity<ResponseMessage> deleteMedication(Long medicationId) throws NotFoundException;
 }

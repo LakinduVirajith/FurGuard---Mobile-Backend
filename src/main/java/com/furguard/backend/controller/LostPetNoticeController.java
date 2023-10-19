@@ -2,6 +2,7 @@ package com.furguard.backend.controller;
 
 import com.furguard.backend.dto.LostPetNoticeDTO;
 import com.furguard.backend.entity.LostPetNotice;
+import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.exception.ConflictException;
 import com.furguard.backend.exception.NotFoundException;
 import com.furguard.backend.service.LostPetNoticeService;
@@ -51,7 +52,7 @@ public class LostPetNoticeController {
             summary = "Mark as Found",
             description = "Mark the lost pet notice as found and remove it within 7 days."
     )
-    public ResponseEntity setAsFound() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> setAsFound() throws NotFoundException {
         return noticeService.setAsFound();
     }
 
@@ -60,7 +61,7 @@ public class LostPetNoticeController {
             summary = "Mark as Not Found",
             description = "Mark the lost pet notice as not found."
     )
-    public ResponseEntity setAsNotFound() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> setAsNotFound() throws NotFoundException {
         return noticeService.setAsNotFound();
     }
 
@@ -69,7 +70,7 @@ public class LostPetNoticeController {
             summary = "Delete Lost Pet Notice",
             description = "Delete the existing lost pet notice."
     )
-    public ResponseEntity deleteNotice() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deleteNotice() throws NotFoundException {
         return noticeService.deleteNotice();
     }
 }

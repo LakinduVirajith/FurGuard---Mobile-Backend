@@ -1,6 +1,7 @@
 package com.furguard.backend.service;
 
 import com.furguard.backend.common.CommonFunctions;
+import com.furguard.backend.dto.UserDTO;
 import com.furguard.backend.entity.ResponseMessage;
 import com.furguard.backend.entity.User;
 import com.furguard.backend.exception.ConflictException;
@@ -31,14 +32,19 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
-    public ResponseEntity userRegister(User user) throws ConflictException {
-        Optional<User> emailCondition = userRepository.findByEmail(user.getEmail());
+    public ResponseEntity<ResponseMessage> userRegister(UserDTO userDTO) throws ConflictException {
+        Optional<User> emailCondition = userRepository.findByEmail(userDTO.getEmail());
         if(emailCondition.isPresent()){
             throw new ConflictException("Email already exists");
         }
 
+        User user = User.builder()
+                        .fullName(userDTO.getFullName())
+                        .email(userDTO.getEmail())
+                        .mobileNumber(userDTO.getMobileNumber()).build();
+
         // Encode Password using passwordEncoder
-        String encodedPassword = encodePassword(user.getPassword());
+        String encodedPassword = encodePassword(userDTO.getPassword());
         user.setPassword(encodedPassword);
 
         // Generate activation token and set its expiry date
@@ -67,7 +73,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity activate(String token) throws NotFoundException, BadRequestException {
+    public ResponseEntity<ResponseMessage> activate(String token) throws NotFoundException, BadRequestException {
         User user = userRepository.findByActivationToken(token)
                 .orElseThrow(() -> new NotFoundException("User not found"));
 
@@ -88,7 +94,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity deactivate() throws NotFoundException {
+    public ResponseEntity<ResponseMessage> deactivate() throws NotFoundException {
         User user = commonFunctions.getUser();
 
         if(user == null){
